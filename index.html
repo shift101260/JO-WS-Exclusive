@@ -387,31 +387,6 @@
             background-color: #FAF8F5;
         }
 
-        /* 圖片縮圖區 */
-        .img-thumbnail-container {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-
-        .img-thumb {
-            padding: 4px 8px;
-            background: #FAF8F5;
-            border: 1px solid var(--ruili-brand);
-            color: var(--ruili-sidebar);
-            border-radius: 4px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-        }
-
-        .img-thumb:hover {
-            background: var(--ruili-brand);
-            color: #fff;
-        }
-
         /* Lightbox 燈箱效果 (點擊圖片放大) */
         .lightbox-modal {
             display: none;
@@ -656,7 +631,7 @@
                     <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
                 </div>
 
-                <!-- 階段期程對應表（整合備註與政府資源） -->
+                <!-- 階段期程對應表 -->
                 <div class="workflow-card">
                     <h3>⏱️ 專案執行階段與對應期程表</h3>
                     <div class="timeline-table-wrapper">
@@ -705,31 +680,6 @@
                                     <td></td>
                                     <td>1. 更換權狀<br>2. 進入補照流程<br>3. 依照審查結果繳納代金相關費用。<br>4. 依照各局處所提審查意見改善，改善時間2年得展延。</td>
                                     <td>1. 取得使用執照。<br>2. 正式編定換權狀。</td>
-                                </tr>
-                                <tr>
-                                    <th>現行政府資源與實際案例</th>
-                                    <td>政府每年推出許多補助方案。</td>
-                                    <td>特登補助 300 萬
-                                        <div class="img-thumbnail-container">
-                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Gov+Subsidy+3M', '特登補助說明示意圖')">🔍 檢視補助圖</div>
-                                        </div>
-                                    </td>
-                                    <td>太陽能自建 ESCO 補助 500 萬額度
-                                        <div class="img-thumbnail-container">
-                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Solar+ESCO+5M', '太陽能ESCO補助示意圖')">🔍 檢視ESCO圖</div>
-                                        </div>
-                                    </td>
-                                    <td><strong>睿立實際案例：</strong><br>
-                                        • 錦一ESG低碳化、智慧化轉型補助
-                                        <div class="img-thumbnail-container">
-                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Jinyi+ESG+Horizontal', '錦一ESG橫式案例圖')">橫式圖片</div>
-                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Jinyi+ESG+Vertical', '錦一ESG直式案例圖')">直式圖片</div>
-                                        </div>
-                                        • 特登消防設備補助
-                                        <div class="img-thumbnail-container">
-                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Fire+Equipment+Subsidy', '特登消防設備補助案例圖')">消防補助圖</div>
-                                        </div>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
