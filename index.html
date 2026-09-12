@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>威欣系統＆玖業光電 專屬系統</title>
+    <title>睿立集團 - 專屬客戶服務與報價系統</title>
     <style>
         :root {
             --ruili-bg: #FBF9F5;       /* 主背景色：溫潤米白 / 燕麥奶色 */
@@ -233,12 +233,102 @@
             display: block;
         }
 
+        /* 功能卡片區 */
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ruili-sidebar);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .action-card {
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
+            border-radius: 14px;
+            padding: 20px 24px;
+            text-decoration: none;
+            color: var(--ruili-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 130px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(41, 37, 36, 0.02);
+            cursor: pointer;
+        }
+
+        .action-card:hover {
+            border-color: var(--ruili-brand);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 163, 115, 0.12);
+            background: linear-gradient(135deg, #ffffff 0%, #FAF8F5 100%);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--ruili-bg);
+            border: 1px solid var(--ruili-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .card-action-icon {
+            font-size: 0.85rem;
+            color: var(--ruili-brand);
+            transition: transform 0.2s ease;
+        }
+
+        .action-card:hover .card-action-icon {
+            transform: translateX(4px);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ruili-sidebar);
+            margin-top: 12px;
+        }
+
         /* ---------------- 專案執行流程細節美編樣式 ---------------- */
         .workflow-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+        }
+
+        .back-btn {
+            background: var(--ruili-sidebar);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background: var(--ruili-brand);
+            color: var(--ruili-sidebar);
         }
 
         .workflow-card {
@@ -269,70 +359,100 @@
         .timeline-table {
             width: 100%;
             border-collapse: collapse;
-            text-align: left;
-            font-size: 0.88rem;
-            table-layout: fixed;
+            text-align: center;
+            font-size: 0.9rem;
         }
 
         .timeline-table th, .timeline-table td {
             border: 1px solid var(--ruili-border);
-            padding: 12px 14px;
-            vertical-align: top;
-            word-wrap: break-word;
+            padding: 12px 10px;
         }
 
-        .timeline-table th.row-header {
+        .timeline-table th {
             background-color: var(--ruili-bg);
             color: var(--ruili-sidebar);
             font-weight: 600;
-            text-align: center;
-            width: 20%;
-        }
-
-        .timeline-table thead th {
-            background-color: var(--ruili-sidebar);
-            color: #ffffff;
-            font-weight: 600;
-            text-align: center;
-            width: 20%;
         }
 
         .timeline-table td {
             color: var(--ruili-dark);
             background: #fff;
-            width: 20%;
         }
 
         .timeline-table tr:hover td {
             background-color: #FAF8F5;
         }
 
-        /* 圖片縮圖區 */
+        /* 備註與點陣清單 */
+        .note-box {
+            background-color: #FDFBF7;
+            border-left: 4px solid var(--ruili-brand);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        .note-box ol {
+            padding-left: 20px;
+        }
+
+        .note-box li {
+            margin-bottom: 6px;
+        }
+
+        /* 資源與圖片展示區 */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .resource-item {
+            background: var(--ruili-bg);
+            border: 1px solid var(--ruili-border);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .resource-item h4 {
+            font-size: 0.95rem;
+            color: var(--ruili-sidebar);
+            margin-bottom: 8px;
+        }
+
         .img-thumbnail-container {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .img-thumb {
-            padding: 4px 8px;
-            background: #FAF8F5;
-            border: 1px solid var(--ruili-brand);
-            color: var(--ruili-sidebar);
-            border-radius: 4px;
-            font-size: 0.75rem;
+            width: 90px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--ruili-border);
             cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #e5e5e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #666;
+            text-align: center;
         }
 
         .img-thumb:hover {
-            background: var(--ruili-brand);
-            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Lightbox 燈箱效果 */
+        /* Lightbox 燈箱效果 (點擊圖片放大) */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -413,6 +533,32 @@
             .ruili-container {
                 padding: 16px;
             }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .action-card {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                min-height: auto;
+                padding: 14px 18px;
+                border-radius: 12px;
+            }
+            .card-top {
+                display: contents;
+            }
+            .card-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 8px;
+                margin-right: 12px;
+            }
+            .card-title {
+                margin-top: 0;
+                flex: 1;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -422,9 +568,9 @@
     <header class="mobile-header-bar">
         <div class="mobile-brand">
             <img src="./ruili-logo.png" alt="Logo">
-            <span>睿立RUILI</span>
+            <span>睿立集團 ERP</span>
         </div>
-        <span style="font-size: 0.75rem; color: var(--ruili-brand);">威欣＆玖業｜專屬入口</span>
+        <span style="font-size: 0.75rem; color: var(--ruili-brand);">Client Portal</span>
     </header>
 
     <!-- 左側固定側邊欄 -->
@@ -435,13 +581,13 @@
                     <img src="./ruili-logo.png" alt="Ruili Logo">
                 </div>
                 <div class="sidebar-brand-text">
-                    <h2>睿立RUILI</h2>
-                    <p>工廠法規政策顧問</p>
+                    <h2>睿立集團</h2>
+                    <p>RUILI GROUP ERP</p>
                 </div>
             </div>
 
             <nav class="sidebar-menu">
-                <a class="menu-item active" onclick="switchModule('overview', this)">
+                <a class="menu-item active" onclick="switchModule('home', this)">
                     <span class="icon">🏠</span>
                     <span>首頁總覽</span>
                 </a>
@@ -477,19 +623,19 @@
             <header class="content-header">
                 <div class="company-row">
                     <div class="company-logo-box">
-                        <img src="./logo2.png" alt="威欣系統 Logo">
+                        <img src="./logo1.png" alt="玖業光電 Logo">
                     </div>
                     <div class="company-info">
-                        <h1>威欣系統股份有限公司</h1>
+                        <h1>玖業光電科技有限公司</h1>
                     </div>
                 </div>
 
                 <div class="company-row">
                     <div class="company-logo-box">
-                        <img src="./logo1.png" alt="玖業光電 Logo">
+                        <img src="./logo2.png" alt="威欣系統 Logo">
                     </div>
                     <div class="company-info">
-                        <h1>玖業光電科技有限公司</h1>
+                        <h1>威欣系統股份有限公司</h1>
                     </div>
                 </div>
 
@@ -499,32 +645,65 @@
                 </div>
             </header>
 
-            <!-- ================= 首頁總覽模組 ================= -->
-            <div id="overview-module" class="module-content active">
-                <div class="workflow-card">
-                    <h3>🏠 歡迎進入威欣系統 ＆ 玖業光電 專屬顧問系統</h3>
-                    <p style="margin-top: 10px; line-height: 1.6; color: var(--ruili-dark);">
-                        本系統為您整合各項專案執行期程、政府補助資源及睿立顧問團隊的專業服務內容。請點選左側選單（或手機選單）切換至「專案執行流程」即可檢視詳細的期程規劃與補助說明圖表。
-                    </p>
-                </div>
+            <!-- ================= 1. 首頁總覽模組 ================= -->
+            <div id="home-module" class="module-content active">
+                <section>
+                    <div class="section-title">
+                        <span>⚡</span> 專屬服務與報價模組
+                    </div>
+                    <div class="cards-grid">
+                        <div class="action-card" onclick="switchModule('workflow', document.querySelectorAll('.menu-item')[1])">
+                            <div class="card-top">
+                                <div class="card-icon">📊</div>
+                                <div class="card-title">專案執行流程</div>
+                            </div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+
+                        <div class="action-card" onclick="alert('報價單模組建置中')">
+                            <div class="card-top">
+                                <div class="card-icon">💰</div>
+                                <div class="card-title">睿立報價單</div>
+                            </div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+
+                        <div class="action-card" onclick="alert('總結說明模組建置中')">
+                            <div class="card-top">
+                                <div class="card-icon">📁</div>
+                                <div class="card-title">總結說明</div>
+                            </div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+
+                        <div class="action-card" onclick="alert('專屬顧問諮詢模組建置中')">
+                            <div class="card-top">
+                                <div class="card-icon">💬</div>
+                                <div class="card-title">專屬顧問諮詢</div>
+                            </div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                    </div>
+                </section>
             </div>
 
-            <!-- ================= 1. 專案執行流程模組 ================= -->
+            <!-- ================= 2. 專案執行流程模組 ================= -->
             <div id="workflow-module" class="module-content">
                 <div class="workflow-header">
-                    <div class="section-title" style="margin-bottom:0; font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;">
+                    <div class="section-title" style="margin-bottom:0;">
                         <span>📊</span> 專案執行流程與期程規劃
                     </div>
+                    <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
                 </div>
 
                 <!-- 階段期程對應表 -->
                 <div class="workflow-card">
-                    <h3>⏱️ 專案執行階段與對應期程表</h3>
+                    <h3>⏱️ 專案期程與執行階段總覽</h3>
                     <div class="timeline-table-wrapper">
                         <table class="timeline-table">
                             <thead>
                                 <tr>
-                                    <th>項目規劃</th>
+                                    <th>項目階段</th>
                                     <th>階段一</th>
                                     <th>階段二</th>
                                     <th>階段三</th>
@@ -533,66 +712,108 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th class="row-header">預計時辰</th>
+                                    <td><strong>預計時辰表</strong></td>
                                     <td>2026年</td>
                                     <td>2030年</td>
                                     <td>2032年</td>
                                     <td>2034年</td>
                                 </tr>
                                 <tr>
-                                    <th class="row-header">施作時間</th>
+                                    <td><strong>施作時間</strong></td>
                                     <td>1-2個月</td>
                                     <td>4年</td>
                                     <td>2+2年</td>
                                     <td>取得使照即換權狀</td>
                                 </tr>
                                 <tr>
-                                    <th class="row-header">土地變更流程</th>
+                                    <td><strong>土地變更流程</strong></td>
                                     <td>簽約 + 送件</td>
                                     <td>通盤檢討開會</td>
                                     <td>計畫通過暫編</td>
                                     <td>正式編定</td>
                                 </tr>
                                 <tr>
-                                    <th class="row-header">睿立收款期程</th>
+                                    <td><strong>睿立收款期程</strong></td>
                                     <td>10%</td>
                                     <td>20%</td>
                                     <td>60%</td>
                                     <td>10%</td>
                                 </tr>
-                                <tr>
-                                    <th class="row-header">重要備註</th>
-                                    <td>每年3月繳納管輔導金10萬，至土地變更完成為止。</td>
-                                    <td>睿立北上參加審查會議，進行法規政策專業溝通、協調與執行。</td>
-                                    <td>1. 換權狀<br>2. 進入補照流程。<br>3. 繳納代金/依審查會議為主。<br>4. 依照各局處所提審查意見改善，時間2年得展延</td>
-                                    <td>1. 取得使用執照<br>2. 正式編定更換權狀</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <!-- 註記與備註說明 -->
+                <div class="workflow-card">
+                    <h3>📌 重要註記與法規備註</h3>
+                    <div class="note-box">
+                        <ol>
+                            <li><strong>年度管輔導金：</strong>每年3月繳納管輔導金 10 萬，至土地變更完成為止。</li>
+                            <li><strong>補照與改善：</strong>換權狀 / 依照各局處所提審查意見改善，改善時間 2 年得展延 / 進入補照流程 / 繳納代金/回饋金。</li>
+                            <li><strong>完工結案：</strong>取得使用執照、正式編定換權狀。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 現行政府資源與實際案例 (附可點擊放大之圖片預覽) -->
+                <div class="workflow-card">
+                    <h3>💡 現行政府資源與實際案例成果</h3>
+                    <div class="resource-grid">
+                        
+                        <div class="resource-item">
+                            <h4>政府補助資源</h4>
+                            <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">
+                                1. 政府每年都會推出許多補助方案。<br>
+                                2. 特登補助 300 萬。<br>
+                                3. 太陽能自建 ESCO 補助 500 萬額度。
+                            </p>
+                            <div class="img-thumbnail-container">
+                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Gov+Subsidy+3M', '特登補助說明示意圖')">補助說明圖</div>
+                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Solar+ESCO+5M', '太陽能ESCO補助示意圖')">太陽能ESCO</div>
+                            </div>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4>睿立協助取得政府資源實際案例</h4>
+                            <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">
+                                • <strong>錦一ESG低碳化、智慧化轉型補助</strong><br>
+                                • <strong>特登消防設備補助</strong>
+                            </p>
+                            <div class="img-thumbnail-container">
+                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Jinyi+ESG+1', '錦一ESG橫式案例圖')">錦一ESG (橫)</div>
+                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Jinyi+ESG+2', '錦一ESG直式案例圖')">錦一ESG (直)</div>
+                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Fire+Equipment+Subsidy', '特登消防設備案例圖')">消防補助 (直)</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
-            <!-- ================= 2. 其它未展開模組 ================= -->
+            <!-- 其它未展開模組預留位置 -->
             <div id="quotation-module" class="module-content">
-                <div class="section-title" style="font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;"><span>💰</span> 睿立報價單</div>
-                <p style="margin-top: 16px;">報價單內容建置中...</p>
+                <div class="section-title"><span>💰</span> 睿立報價單</div>
+                <p>報價單內容建置中...</p>
+                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
             </div>
 
             <div id="documents-module" class="module-content">
-                <div class="section-title" style="font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;"><span>📁</span> 總結說明</div>
-                <p style="margin-top: 16px;">總結說明內容建置中...</p>
+                <div class="section-title"><span>📁</span> 總結說明</div>
+                <p>總結說明內容建置中...</p>
+                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
             </div>
 
             <div id="contact-module" class="module-content">
-                <div class="section-title" style="font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;"><span>💬</span> 專屬顧問諮詢</div>
-                <p style="margin-top: 16px;">專屬顧問諮詢內容建置中...</p>
+                <div class="section-title"><span>💬</span> 專屬顧問諮詢</div>
+                <p>專屬顧問諮詢內容建置中...</p>
+                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
             </div>
 
         </div>
     </main>
 
-    <!-- 圖片燈箱 Modal -->
+    <!-- 圖片燈箱 Modal (點擊圖片放大檢視) -->
     <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" src="" alt="放大預覽圖">
@@ -602,11 +823,14 @@
     <script>
         // 切換系統模組顯示
         function switchModule(moduleName, element) {
+            // 隱藏所有模組
             document.querySelectorAll('.module-content').forEach(el => {
                 el.classList.remove('active');
             });
+            // 顯示目標模組
             document.getElementById(moduleName + '-module').classList.add('active');
 
+            // 更新側邊欄 Active 狀態
             if(element) {
                 document.querySelectorAll('.menu-item').forEach(item => {
                     item.classList.remove('active');
@@ -614,6 +838,7 @@
                 element.classList.add('active');
             }
 
+            // 滾動回頂部
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
