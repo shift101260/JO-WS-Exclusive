@@ -351,7 +351,7 @@
             padding-bottom: 8px;
         }
 
-        /* 期程表格樣式 */
+        /* 修復後的期程表格樣式 */
         .timeline-table-wrapper {
             overflow-x: auto;
         }
@@ -361,26 +361,38 @@
             border-collapse: collapse;
             text-align: left;
             font-size: 0.88rem;
+            table-layout: fixed;
         }
 
         .timeline-table th, .timeline-table td {
             border: 1px solid var(--ruili-border);
             padding: 12px 14px;
             vertical-align: top;
+            word-wrap: break-word;
         }
 
-        .timeline-table th {
+        /* 第一欄（項目規劃標題）設定寬度與置中 */
+        .timeline-table th.row-header {
             background-color: var(--ruili-bg);
             color: var(--ruili-sidebar);
             font-weight: 600;
             text-align: center;
-            width: 18%;
+            width: 20%;
+        }
+
+        /* 表格最上方標題列（階段一~四） */
+        .timeline-table thead th {
+            background-color: var(--ruili-sidebar);
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            width: 20%;
         }
 
         .timeline-table td {
             color: var(--ruili-dark);
             background: #fff;
-            width: 20.5%;
+            width: 20%;
         }
 
         .timeline-table tr:hover td {
@@ -542,7 +554,7 @@
                 </div>
                 <div class="sidebar-brand-text">
                     <h2>睿立RUILI</h2>
-                    <p>工廠法規政策顧問 </p>
+                    <p>工廠法規政策顧問</p>
                 </div>
             </div>
 
@@ -579,7 +591,7 @@
     <main class="ruili-main">
         <div class="ruili-container">
 
-            <!-- 頂部資訊列：已將威欣系統與玖業光電位置對調 -->
+            <!-- 頂部資訊列 -->
             <header class="content-header">
                 <div class="company-row">
                     <div class="company-logo-box">
@@ -656,7 +668,7 @@
                     <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
                 </div>
 
-                <!-- 階段期程對應表（整合備註與政府資源） -->
+                <!-- 階段期程對應表（已修復表格排版） -->
                 <div class="workflow-card">
                     <h3>⏱️ 專案執行階段與對應期程表</h3>
                     <div class="timeline-table-wrapper">
@@ -672,42 +684,42 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>預計時辰表</th>
+                                    <th class="row-header">預計時辰表</th>
                                     <td>2026年</td>
                                     <td>2030年</td>
                                     <td>2032年</td>
                                     <td>2034年</td>
                                 </tr>
                                 <tr>
-                                    <th>施作時間</th>
+                                    <th class="row-header">施作時間</th>
                                     <td>1-2個月</td>
                                     <td>4年</td>
                                     <td>2+2年</td>
                                     <td>取得使照即換權狀</td>
                                 </tr>
                                 <tr>
-                                    <th>土地變更流程</th>
+                                    <th class="row-header">土地變更流程</th>
                                     <td>簽約 + 送件</td>
                                     <td>通盤檢討開會</td>
                                     <td>計畫通過暫編</td>
                                     <td>正式編定</td>
                                 </tr>
                                 <tr>
-                                    <th>睿立收款期程</th>
+                                    <th class="row-header">睿立收款期程</th>
                                     <td>10%</td>
                                     <td>20%</td>
                                     <td>60%</td>
                                     <td>10%</td>
                                 </tr>
                                 <tr>
-                                    <th>重要註記與法規備註</th>
+                                    <th class="row-header">重要註記與法規備註</th>
                                     <td>每年3月繳納管輔導金10萬，至土地變更完成為止。</td>
-                                    <td>依照各局處所提審查意見改善，改善時間2年得展延。</td>
-                                    <td>進入補照流程、繳納代金/回饋金。</td>
+                                    <td>1. 換權狀<br>2. 依照各局處所提審查意見改善，改善時間2年得展延。<br>3. 進入補照流程<br>4. 繳納代金/回饋金</td>
+                                    <td>（依專案實際進度配合辦理）</td>
                                     <td>1. 取得使用執照<br>2. 正式編定換權狀</td>
                                 </tr>
                                 <tr>
-                                    <th>現行政府資源與實際案例</th>
+                                    <th class="row-header">現行政府資源與實際案例</th>
                                     <td>政府每年推出許多補助方案。</td>
                                     <td>特登補助 300 萬
                                         <div class="img-thumbnail-container">
