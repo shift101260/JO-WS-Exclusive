@@ -6,18 +6,17 @@
     <title>玖業光電 & 威欣系統 - 專屬客戶服務與報價系統</title>
     <style>
         :root {
-            /* 黑金風格色系變數 */
-            --bg-color: #0b0c10;
-            --card-bg: rgba(20, 22, 27, 0.85);
-            --border-color: rgba(212, 175, 55, 0.25); /* 金色微光邊框 */
-            --border-hover: rgba(212, 175, 55, 0.8);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --gold-primary: #d4af37;
-            --gold-light: #f3e5ab;
-            --accent-glow: rgba(212, 175, 55, 0.12);
-            --btn-bg: linear-gradient(135deg, rgba(30, 32, 40, 0.9) 0%, rgba(15, 17, 21, 0.95) 100%);
-            --btn-hover: linear-gradient(135deg, rgba(45, 48, 60, 0.95) 0%, rgba(20, 22, 28, 1) 100%);
+            /* 睿立集團專屬品牌色號卡 */
+            --ruili-bg: #FBF9F5;       /* 主背景色：溫潤米白 / 燕麥奶色 */
+            --ruili-brand: #D4A373;    /* 主品牌色：暖焦糖棕 / 大地奶茶色 */
+            --ruili-sidebar: #2C2A29;  /* 側邊欄/深色底：暖木炭灰 / 深褐炭色 */
+            --ruili-matcha: #E9EDC9;   /* 輔助標籤色：柔和抹茶綠 / 灰綠色 */
+            --ruili-pink: #EED7C5;     /* 輔助強調色：柔杏粉棕 / 暖肉粉色 */
+            --ruili-dark: #292524;     /* 深色文字/邊框：深石灰 / 暖墨色 */
+            --ruili-border: #E7E5E4;   /* 淺色邊框：燕麥灰 / 暖卡其邊框 */
+            
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(212, 163, 115, 0.3);
         }
 
         * {
@@ -28,11 +27,11 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--ruili-bg);
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 90% 90%, rgba(180, 140, 40, 0.04) 0%, transparent 45%);
-            color: var(--text-primary);
+                radial-gradient(circle at 10% 10%, rgba(212, 163, 115, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(233, 237, 201, 0.1) 0%, transparent 40%);
+            color: var(--ruili-dark);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -40,32 +39,32 @@
             padding: 20px;
         }
 
-        /* 質感黑金電子名片外框容器 */
+        /* 溫潤質感電子名片外框容器 */
         .card-container {
             width: 100%;
             max-width: 460px;
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
             border-radius: 24px;
             padding: 40px 24px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 
-                        0 0 60px var(--accent-glow);
+            box-shadow: 0 20px 40px rgba(41, 37, 36, 0.06), 
+                        0 0 40px rgba(212, 163, 115, 0.08);
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        /* 頂部奢華金線裝飾 */
+        /* 頂部品牌色裝飾線 */
         .card-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            height: 3px;
+            background: linear-gradient(90deg, var(--ruili-brand), var(--ruili-matcha), var(--ruili-brand));
         }
 
         /* 雙 LOGO 顯示區 */
@@ -81,18 +80,19 @@
             width: 75px;
             height: 75px;
             border-radius: 18px;
-            background: rgba(15, 17, 21, 0.8);
-            border: 1px solid var(--border-color);
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            transition: border-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(41, 37, 36, 0.04);
+            transition: all 0.3s ease;
         }
 
         .logo-box:hover {
-            border-color: var(--gold-primary);
+            border-color: var(--ruili-brand);
+            transform: translateY(-2px);
         }
 
         .logo-box img {
@@ -109,18 +109,21 @@
         .profile-info h1 {
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: 1px;
+            color: var(--ruili-sidebar);
+            letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
 
         .profile-info .sub-title {
-            font-size: 0.85rem;
-            color: var(--gold-primary);
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--ruili-dark);
+            background-color: var(--ruili-pink);
+            padding: 4px 12px;
+            border-radius: 20px;
             font-weight: 500;
-            letter-spacing: 2px;
-            margin-top: 8px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
         }
 
         /* 按鈕群組 */
@@ -134,23 +137,33 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--btn-bg);
-            border: 1px solid var(--border-color);
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
             border-radius: 14px;
             padding: 16px 20px;
-            color: var(--text-primary);
+            color: var(--ruili-sidebar);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 6px rgba(41, 37, 36, 0.02);
         }
 
         .menu-btn:hover {
-            background: var(--btn-hover);
-            border-color: var(--border-hover);
+            background: var(--ruili-sidebar);
+            color: #ffffff;
+            border-color: var(--ruili-sidebar);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 6px 16px rgba(44, 42, 41, 0.15);
+        }
+
+        .menu-btn:hover .arrow {
+            color: var(--ruili-brand);
+            transform: translateX(4px);
+        }
+
+        .menu-btn:hover .icon-badge {
+            background: rgba(212, 163, 115, 0.2);
         }
 
         .menu-btn .btn-content {
@@ -159,27 +172,30 @@
             gap: 14px;
         }
 
-        .menu-btn .icon {
-            font-size: 1.2rem;
+        .icon-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--ruili-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+            border: 1px solid var(--ruili-border);
         }
 
         .menu-btn .arrow {
-            color: var(--gold-primary);
+            color: var(--ruili-brand);
             font-size: 0.9rem;
-            transition: transform 0.2s ease;
-            opacity: 0.7;
-        }
-
-        .menu-btn:hover .arrow {
-            transform: translateX(4px);
-            opacity: 1;
+            transition: all 0.2s ease;
         }
 
         /* 底部版權宣告 */
         .footer-note {
             margin-top: 30px;
             font-size: 0.75rem;
-            color: var(--text-secondary);
+            color: var(--ruili-dark);
             opacity: 0.6;
             letter-spacing: 1px;
         }
@@ -209,7 +225,7 @@
         <div class="menu-grid">
             <a href="#workflow" class="menu-btn" onclick="openModule('workflow')">
                 <div class="btn-content">
-                    <span class="icon">📊</span>
+                    <div class="icon-badge">📊</div>
                     <span>專案執行流程</span>
                 </div>
                 <span class="arrow">➔</span>
@@ -217,7 +233,7 @@
 
             <a href="#quotation" class="menu-btn" onclick="openModule('quotation')">
                 <div class="btn-content">
-                    <span class="icon">💰</span>
+                    <div class="icon-badge">💰</div>
                     <span>睿立報價單</span>
                 </div>
                 <span class="arrow">➔</span>
@@ -225,7 +241,7 @@
 
             <a href="#documents" class="menu-btn" onclick="openModule('documents')">
                 <div class="btn-content">
-                    <span class="icon">📁</span>
+                    <div class="icon-badge">📁</div>
                     <span>總結說明</span>
                 </div>
                 <span class="arrow">➔</span>
@@ -233,7 +249,7 @@
 
             <a href="#contact" class="menu-btn" onclick="openModule('contact')">
                 <div class="btn-content">
-                    <span class="icon">💬</span>
+                    <div class="icon-badge">💬</div>
                     <span>專屬顧問諮詢</span>
                 </div>
                 <span class="arrow">➔</span>
