@@ -359,97 +359,57 @@
         .timeline-table {
             width: 100%;
             border-collapse: collapse;
-            text-align: center;
-            font-size: 0.9rem;
+            text-align: left;
+            font-size: 0.88rem;
         }
 
         .timeline-table th, .timeline-table td {
             border: 1px solid var(--ruili-border);
-            padding: 12px 10px;
+            padding: 12px 14px;
+            vertical-align: top;
         }
 
         .timeline-table th {
             background-color: var(--ruili-bg);
             color: var(--ruili-sidebar);
             font-weight: 600;
+            text-align: center;
+            width: 18%;
         }
 
         .timeline-table td {
             color: var(--ruili-dark);
             background: #fff;
+            width: 20.5%;
         }
 
         .timeline-table tr:hover td {
             background-color: #FAF8F5;
         }
 
-        /* 備註與點陣清單 */
-        .note-box {
-            background-color: #FDFBF7;
-            border-left: 4px solid var(--ruili-brand);
-            padding: 16px;
-            border-radius: 0 8px 8px 0;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-top: 12px;
-        }
-
-        .note-box ol {
-            padding-left: 20px;
-        }
-
-        .note-box li {
-            margin-bottom: 6px;
-        }
-
-        /* 資源與圖片展示區 */
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin-top: 12px;
-        }
-
-        .resource-item {
-            background: var(--ruili-bg);
-            border: 1px solid var(--ruili-border);
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .resource-item h4 {
-            font-size: 0.95rem;
-            color: var(--ruili-sidebar);
-            margin-bottom: 8px;
-        }
-
+        /* 圖片縮圖區 */
         .img-thumbnail-container {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .img-thumb {
-            width: 90px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid var(--ruili-border);
+            padding: 4px 8px;
+            background: #FAF8F5;
+            border: 1px solid var(--ruili-brand);
+            color: var(--ruili-sidebar);
+            border-radius: 4px;
+            font-size: 0.75rem;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            background: #e5e5e5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: #666;
-            text-align: center;
+            transition: all 0.2s;
+            font-weight: 500;
         }
 
         .img-thumb:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: var(--ruili-brand);
+            color: #fff;
         }
 
         /* Lightbox 燈箱效果 (點擊圖片放大) */
@@ -568,9 +528,9 @@
     <header class="mobile-header-bar">
         <div class="mobile-brand">
             <img src="./ruili-logo.png" alt="Logo">
-            <span>睿立RUILI</span>
+            <span>睿立集團 ERP</span>
         </div>
-        <span style="font-size: 0.75rem; color: var(--ruili-brand);">玖業&威欣專屬系統</span>
+        <span style="font-size: 0.75rem; color: var(--ruili-brand);">Client Portal</span>
     </header>
 
     <!-- 左側固定側邊欄 -->
@@ -696,14 +656,14 @@
                     <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
                 </div>
 
-                <!-- 階段期程對應表 -->
+                <!-- 階段期程對應表（整合備註與政府資源） -->
                 <div class="workflow-card">
-                    <h3>⏱️ 專案期程與執行階段總覽</h3>
+                    <h3>⏱️ 專案執行階段與對應期程表</h3>
                     <div class="timeline-table-wrapper">
                         <table class="timeline-table">
                             <thead>
                                 <tr>
-                                    <th>項目階段</th>
+                                    <th>項目規劃</th>
                                     <th>階段一</th>
                                     <th>階段二</th>
                                     <th>階段三</th>
@@ -712,81 +672,67 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><strong>預計時辰表</strong></td>
+                                    <th>預計時辰表</th>
                                     <td>2026年</td>
                                     <td>2030年</td>
                                     <td>2032年</td>
                                     <td>2034年</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>施作時間</strong></td>
+                                    <th>施作時間</th>
                                     <td>1-2個月</td>
                                     <td>4年</td>
                                     <td>2+2年</td>
                                     <td>取得使照即換權狀</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>土地變更流程</strong></td>
+                                    <th>土地變更流程</th>
                                     <td>簽約 + 送件</td>
                                     <td>通盤檢討開會</td>
                                     <td>計畫通過暫編</td>
                                     <td>正式編定</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>睿立收款期程</strong></td>
+                                    <th>睿立收款期程</th>
                                     <td>10%</td>
                                     <td>20%</td>
                                     <td>60%</td>
                                     <td>10%</td>
                                 </tr>
+                                <tr>
+                                    <th>重要註記與法規備註</th>
+                                    <td>每年3月繳納管輔導金10萬，至土地變更完成為止。</td>
+                                    <td>依照各局處所提審查意見改善，改善時間2年得展延。</td>
+                                    <td>進入補照流程、繳納代金/回饋金。</td>
+                                    <td>1. 取得使用執照<br>2. 正式編定換權狀</td>
+                                </tr>
+                                <tr>
+                                    <th>現行政府資源與實際案例</th>
+                                    <td>政府每年推出許多補助方案。</td>
+                                    <td>特登補助 300 萬
+                                        <div class="img-thumbnail-container">
+                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Gov+Subsidy+3M', '特登補助說明示意圖')">🔍 檢視補助圖</div>
+                                        </div>
+                                    </td>
+                                    <td>太陽能自建 ESCO 補助 500 萬額度
+                                        <div class="img-thumbnail-container">
+                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Solar+ESCO+5M', '太陽能ESCO補助示意圖')">🔍 檢視ESCO圖</div>
+                                        </div>
+                                    </td>
+                                    <td><strong>睿立實際案例：</strong><br>
+                                        • 錦一ESG低碳化、智慧化轉型補助
+                                        <div class="img-thumbnail-container">
+                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Jinyi+ESG+Horizontal', '錦一ESG橫式案例圖')">橫式圖片</div>
+                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Jinyi+ESG+Vertical', '錦一ESG直式案例圖')">直式圖片</div>
+                                        </div>
+                                        • 特登消防設備補助
+                                        <div class="img-thumbnail-container">
+                                            <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Fire+Equipment+Subsidy', '特登消防設備補助案例圖')">消防補助圖</div>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <!-- 註記與備註說明 -->
-                <div class="workflow-card">
-                    <h3>📌 重要註記與法規備註</h3>
-                    <div class="note-box">
-                        <ol>
-                            <li><strong>年度管輔導金：</strong>每年3月繳納管輔導金 10 萬，至土地變更完成為止。</li>
-                            <li><strong>補照與改善：</strong>換權狀 / 依照各局處所提審查意見改善，改善時間 2 年得展延 / 進入補照流程 / 繳納代金/回饋金。</li>
-                            <li><strong>完工結案：</strong>取得使用執照、正式編定換權狀。</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <!-- 現行政府資源與實際案例 (附可點擊放大之圖片預覽) -->
-                <div class="workflow-card">
-                    <h3>💡 現行政府資源與實際案例成果</h3>
-                    <div class="resource-grid">
-                        
-                        <div class="resource-item">
-                            <h4>政府補助資源</h4>
-                            <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">
-                                1. 政府每年都會推出許多補助方案。<br>
-                                2. 特登補助 300 萬。<br>
-                                3. 太陽能自建 ESCO 補助 500 萬額度。
-                            </p>
-                            <div class="img-thumbnail-container">
-                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Gov+Subsidy+3M', '特登補助說明示意圖')">補助說明圖</div>
-                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Solar+ESCO+5M', '太陽能ESCO補助示意圖')">太陽能ESCO</div>
-                            </div>
-                        </div>
-
-                        <div class="resource-item">
-                            <h4>睿立協助取得政府資源實際案例</h4>
-                            <p style="font-size: 0.85rem; color: #555; line-height: 1.5;">
-                                • <strong>錦一ESG低碳化、智慧化轉型補助</strong><br>
-                                • <strong>特登消防設備補助</strong>
-                            </p>
-                            <div class="img-thumbnail-container">
-                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/800x600?text=Jinyi+ESG+1', '錦一ESG橫式案例圖')">錦一ESG (橫)</div>
-                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Jinyi+ESG+2', '錦一ESG直式案例圖')">錦一ESG (直)</div>
-                                <div class="img-thumb" onclick="openLightbox('https://via.placeholder.com/600x800?text=Fire+Equipment+Subsidy', '特登消防設備案例圖')">消防補助 (直)</div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -823,14 +769,11 @@
     <script>
         // 切換系統模組顯示
         function switchModule(moduleName, element) {
-            // 隱藏所有模組
             document.querySelectorAll('.module-content').forEach(el => {
                 el.classList.remove('active');
             });
-            // 顯示目標模組
             document.getElementById(moduleName + '-module').classList.add('active');
 
-            // 更新側邊欄 Active 狀態
             if(element) {
                 document.querySelectorAll('.menu-item').forEach(item => {
                     item.classList.remove('active');
@@ -838,7 +781,6 @@
                 element.classList.add('active');
             }
 
-            // 滾動回頂部
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
