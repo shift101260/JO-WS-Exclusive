@@ -8,18 +8,60 @@
     <link rel="stylesheet" href="./variables.css">
     <link rel="stylesheet" href="./layout.css">
     <style>
-        /* 僅針對內部元件進行精緻化微調，不破壞 layout.css 的全域骨架 */
-        * {
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        /* ----------------------------------------------------
+         * 【安全防護網】強制修正 layout.css 可能漏掉的側邊欄屬性
+         * 確保不影響其他系統，但能在此頁面完美呈現側邊欄與版面
+         * ---------------------------------------------------- */
+        body {
+            background-color: var(--ruili-bg) !important;
+            color: var(--ruili-dark) !important;
+            display: flex !important;
+            height: 100vh !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
         }
 
-        /* 側邊欄內部排版對齊 */
+        .ruili-sidebar {
+            width: 260px !important;
+            background-color: var(--ruili-sidebar) !important; /* 強制套用暖木炭灰背景 */
+            color: #ffffff !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            height: 100vh !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            z-index: 100 !important;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .ruili-main {
+            margin-left: 260px !important; /* 確保右側內容不會被側邊欄壓到 */
+            flex: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100vh !important;
+            overflow-y: auto !important;
+            background-color: var(--ruili-bg) !important;
+        }
+
+        .ruili-container {
+            padding: 40px !important;
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+        }
+
+        /* ----------------------------------------------------
+         * 側邊欄內部與卡片元件設計
+         * ---------------------------------------------------- */
         .sidebar-top {
             display: flex;
             flex-direction: column;
             gap: 24px;
-            padding: 20px 16px;
+            padding: 24px 16px;
         }
 
         .sidebar-brand {
@@ -31,8 +73,8 @@
         }
 
         .sidebar-logo-box {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 10px;
             background: #ffffff;
             display: flex;
@@ -53,13 +95,14 @@
             font-weight: 600;
             letter-spacing: 1px;
             color: #ffffff;
+            margin: 0;
         }
 
         .sidebar-brand-text p {
             font-size: 0.7rem;
             color: var(--ruili-brand);
             letter-spacing: 0.5px;
-            margin-top: 2px;
+            margin: 2px 0 0 0;
         }
 
         .sidebar-menu {
@@ -96,11 +139,11 @@
             font-size: 0.75rem;
             color: #9ca3af;
             text-align: center;
-            padding: 15px;
+            padding: 20px 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* 右側主內容區塊細節 */
+        /* 內容區塊 */
         .content-header {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
@@ -117,7 +160,7 @@
             font-size: 1.35rem;
             font-weight: 700;
             color: var(--ruili-sidebar);
-            margin-bottom: 6px;
+            margin: 0 0 6px 0;
         }
 
         .header-titles .badge {
@@ -231,7 +274,7 @@
 </head>
 <body>
 
-    <!-- 使用您 layout.css 專用的 .ruili-sidebar 類別 -->
+    <!-- 左側固定側邊欄 -->
     <aside class="ruili-sidebar">
         <div class="sidebar-top">
             <div class="sidebar-brand">
@@ -273,7 +316,7 @@
         </div>
     </aside>
 
-    <!-- 使用您 layout.css 專用的 .ruili-main 與 .ruili-container 類別 -->
+    <!-- 右側主內容區 -->
     <main class="ruili-main">
         <div class="ruili-container">
             <!-- 頂部資訊列 -->
