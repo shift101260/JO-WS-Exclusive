@@ -191,13 +191,36 @@
             transition: all 0.2s ease;
         }
 
-        /* 底部版權宣告 */
+        /* 底部版權宣告與微型 LOGO 格 */
         .footer-note {
             margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             font-size: 0.75rem;
             color: var(--ruili-dark);
-            opacity: 0.6;
-            letter-spacing: 1px;
+            opacity: 0.75;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-logo {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(41, 37, 36, 0.05);
+        }
+
+        .footer-logo img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -256,9 +279,12 @@
             </a>
         </div>
 
-        <!-- 底部小字 -->
+        <!-- 底部帶有微型 LOGO 的版權宣告 -->
         <div class="footer-note">
-            RUILI GROUP CLIENT PORTAL © 2026
+            <div class="footer-logo">
+                <img src="./ruili-logo.png" alt="Ruili Logo">
+            </div>
+            <span>RUILI GROUP CLIENT PORTAL © 2026</span>
         </div>
     </div>
 
