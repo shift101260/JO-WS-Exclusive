@@ -351,13 +351,16 @@
             padding-bottom: 8px;
         }
 
-        /* 期程與報價表格樣式 */
+        /* 期程與報價表格樣式 (支援手機橫向捲動) */
         .timeline-table-wrapper {
+            width: 100%;
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .timeline-table {
             width: 100%;
+            min-width: 750px; /* 確保在手機上有足夠寬度並可左右滑動 */
             border-collapse: collapse;
             text-align: left;
             font-size: 0.88rem;
@@ -365,8 +368,8 @@
 
         .timeline-table th, .timeline-table td {
             border: 1px solid var(--ruili-border);
-            padding: 12px 14px;
-            vertical-align: top;
+            padding: 14px 16px;
+            vertical-align: middle; /* 改為垂直置中，排版更整齊 */
         }
 
         .timeline-table th {
@@ -687,41 +690,41 @@
                         <table class="timeline-table">
                             <thead>
                                 <tr>
-                                    <th>項目規劃</th>
-                                    <th>階段一</th>
-                                    <th>階段二</th>
-                                    <th>階段三</th>
-                                    <th>階段四</th>
+                                    <th style="width: 16%;">項目規劃</th>
+                                    <th style="width: 21%;">階段一</th>
+                                    <th style="width: 21%;">階段二</th>
+                                    <th style="width: 21%;">階段三</th>
+                                    <th style="width: 21%;">階段四</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th style="text-align: left;">預計時辰表</th>
-                                    <td>2026年</td>
-                                    <td>2030年</td>
-                                    <td>2032年</td>
-                                    <td>2034年</td>
+                                    <td style="text-align: center;">2026年</td>
+                                    <td style="text-align: center;">2030年</td>
+                                    <td style="text-align: center;">2032年</td>
+                                    <td style="text-align: center;">2034年</td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: left;">施作時間</th>
-                                    <td>1-2個月</td>
-                                    <td>4年</td>
-                                    <td>2+2年</td>
-                                    <td>取得使照即換權狀</td>
+                                    <td style="text-align: center;">1-2個月</td>
+                                    <td style="text-align: center;">4年</td>
+                                    <td style="text-align: center;">2+2年</td>
+                                    <td style="text-align: center;">取得使照即換權狀</td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: left;">土地變更流程</th>
-                                    <td>簽約 + 送件</td>
-                                    <td>通檢審查會議</td>
-                                    <td>計畫通過暫編</td>
-                                    <td>正式編定</td>
+                                    <td style="text-align: center;">簽約 + 送件</td>
+                                    <td style="text-align: center;">通檢審查會議</td>
+                                    <td style="text-align: center;">計畫通過暫編</td>
+                                    <td style="text-align: center;">正式編定</td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: left;">睿立收款期程</th>
-                                    <td>10%</td>
-                                    <td>20%</td>
-                                    <td>60%</td>
-                                    <td>10%</td>
+                                    <td style="text-align: center;">10%</td>
+                                    <td style="text-align: center;">20%</td>
+                                    <td style="text-align: center;">60%</td>
+                                    <td style="text-align: center;">10%</td>
                                 </tr>
                                 <tr>
                                     <th style="text-align: left;">重要備註</th>
