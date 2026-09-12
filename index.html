@@ -137,7 +137,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* 手機版專用頂部導覽列（預設電腦版隱藏） */
+        /* 手機版專用頂部導覽列（預設桌機隱藏） */
         .mobile-header-bar {
             display: none;
         }
@@ -217,7 +217,7 @@
             object-fit: contain;
         }
 
-        /* 功能卡片網格區 */
+        /* 功能卡片區 */
         .section-title {
             font-size: 1.05rem;
             font-weight: 600;
@@ -228,9 +228,10 @@
             margin-bottom: 15px;
         }
 
+        /* 桌機端：網格卡片 */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
@@ -244,7 +245,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 160px;
+            min-height: 150px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(41, 37, 36, 0.02);
         }
@@ -285,7 +286,7 @@
         }
 
         .card-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--ruili-sidebar);
             margin-top: 15px;
@@ -296,7 +297,7 @@
             body {
                 flex-direction: column;
             }
-            /* 手機版將側邊欄隱藏，改為上方簡約導覽列 */
+            /* 隱藏桌機側邊欄，改顯示頂部導覽列 */
             .ruili-sidebar {
                 display: none; 
             }
@@ -330,7 +331,7 @@
                 letter-spacing: 0.5px;
             }
             .ruili-main {
-                margin-left: 0 !important; /* 解除桌機的左側留白 */
+                margin-left: 0 !important;
                 width: 100%;
             }
             .ruili-container {
@@ -341,6 +342,7 @@
                 align-items: flex-start;
                 gap: 16px;
                 padding: 20px;
+                border-radius: 16px;
             }
             .header-titles h1 {
                 font-size: 1.1rem;
@@ -349,15 +351,43 @@
                 width: 100%;
                 justify-content: flex-start;
             }
+            
+            /* 手機版卡片改為類似截圖的滿版長條按鈕清單 */
             .cards-grid {
-                grid-template-columns: 1fr; /* 手機上卡片單欄排列，點擊更舒適 */
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .action-card {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                min-height: auto;
+                padding: 18px 20px;
+                border-radius: 16px;
+            }
+            .card-top {
+                display: contents; /* 讓內部元素重新排列為左右結構 */
+            }
+            .card-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+                margin-right: 12px;
+            }
+            .card-title {
+                margin-top: 0;
+                flex: 1;
+                font-size: 1rem;
+            }
+            .card-action-icon {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 手機專用頂部導覽列 (僅在手機螢幕顯示) -->
+    <!-- 手機專用頂部導覽列 -->
     <header class="mobile-header-bar">
         <div class="mobile-brand">
             <img src="./ruili-logo.png" alt="Logo">
@@ -433,33 +463,33 @@
                     <a href="#workflow" class="action-card" onclick="openModule('workflow')">
                         <div class="card-top">
                             <div class="card-icon">📊</div>
-                            <span class="card-action-icon">➔</span>
+                            <div class="card-title">專案執行流程</div>
                         </div>
-                        <div class="card-title">專案執行流程</div>
+                        <span class="card-action-icon">➔</span>
                     </a>
 
                     <a href="#quotation" class="action-card" onclick="openModule('quotation')">
                         <div class="card-top">
                             <div class="card-icon">💰</div>
-                            <span class="card-action-icon">➔</span>
+                            <div class="card-title">睿立報價單</div>
                         </div>
-                        <div class="card-title">睿立報價單</div>
+                        <span class="card-action-icon">➔</span>
                     </a>
 
                     <a href="#documents" class="action-card" onclick="openModule('documents')">
                         <div class="card-top">
                             <div class="card-icon">📁</div>
-                            <span class="card-action-icon">➔</span>
+                            <div class="card-title">總結說明</div>
                         </div>
-                        <div class="card-title">總結說明</div>
+                        <span class="card-action-icon">➔</span>
                     </a>
 
                     <a href="#contact" class="action-card" onclick="openModule('contact')">
                         <div class="card-top">
                             <div class="card-icon">💬</div>
-                            <span class="card-action-icon">➔</span>
+                            <div class="card-title">專屬顧問諮詢</div>
                         </div>
-                        <div class="card-title">專屬顧問諮詢</div>
+                        <span class="card-action-icon">➔</span>
                     </a>
                 </div>
             </section>
