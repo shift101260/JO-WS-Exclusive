@@ -441,7 +441,11 @@
             </div>
 
             <nav class="sidebar-menu">
-                <a class="menu-item active" onclick="switchModule('workflow', this)">
+                <a class="menu-item active" onclick="switchModule('overview', this)">
+                    <span class="icon">🏠</span>
+                    <span>首頁總覽</span>
+                </a>
+                <a class="menu-item" onclick="switchModule('workflow', this)">
                     <span class="icon">📊</span>
                     <span>專案執行流程</span>
                 </a>
@@ -495,8 +499,18 @@
                 </div>
             </header>
 
-            <!-- ================= 1. 專案執行流程模組（預設顯示） ================= -->
-            <div id="workflow-module" class="module-content active">
+            <!-- ================= 首頁總覽模組 ================= -->
+            <div id="overview-module" class="module-content active">
+                <div class="workflow-card">
+                    <h3>🏠 歡迎進入威欣系統 ＆ 玖業光電 專屬顧問系統</h3>
+                    <p style="margin-top: 10px; line-height: 1.6; color: var(--ruili-dark);">
+                        本系統為您整合各項專案執行期程、政府補助資源及睿立顧問團隊的專業服務內容。請點選左側選單（或手機選單）切換至「專案執行流程」即可檢視詳細的期程規劃與補助說明圖表。
+                    </p>
+                </div>
+            </div>
+
+            <!-- ================= 1. 專案執行流程模組 ================= -->
+            <div id="workflow-module" class="module-content">
                 <div class="workflow-header">
                     <div class="section-title" style="margin-bottom:0; font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;">
                         <span>📊</span> 專案執行流程與期程規劃
