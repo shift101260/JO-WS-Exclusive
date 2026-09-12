@@ -40,7 +40,7 @@
         /* 電子名片外框容器 */
         .card-container {
             width: 100%;
-            max-width: 480px; /* 模擬手機最適寬度，在電腦上呈現精緻卡片感 */
+            max-width: 480px;
             background: var(--card-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -75,8 +75,8 @@
         }
 
         .logo-box img {
-            max-width: 80%;
-            max-height: 80%;
+            max-width: 85%;
+            max-height: 85%;
             object-fit: contain;
         }
 
@@ -157,15 +157,13 @@
 <body>
 
     <div class="card-container">
-        <!-- 雙 LOGO 顯示區 -->
+        <!-- 雙 LOGO 顯示區 (使用相對路徑讀取同資料夾的圖片) -->
         <div class="logo-section">
             <div class="logo-box">
-                <!-- 替換為您的第一張 LOGO 圖片網址 -->
-                <img src="https://via.placeholder.com/60?text=LOGO1" alt="Company Logo 1">
+                <img src="./logo1.png" alt="Company Logo 1">
             </div>
             <div class="logo-box">
-                <!-- 替換為您的第二張 LOGO 圖片網址 -->
-                <img src="https://via.placeholder.com/60?text=LOGO2" alt="Company Logo 2">
+                <img src="./logo2.png" alt="Company Logo 2">
             </div>
         </div>
 
@@ -217,9 +215,7 @@
     </div>
 
     <script>
-        // 點擊按鈕後的互動切換邏輯（未來可對接對應的介面或路由）
         function openModule(moduleName) {
-            // 這裡未來可以改為跳轉頁面、開啟 Modal 或切換動態渲染區塊
             console.log("切換至模組: " + moduleName);
         }
     </script>
