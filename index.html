@@ -308,7 +308,7 @@
             margin-top: 12px;
         }
 
-        /* ---------------- 專案執行流程細節美編樣式 ---------------- */
+        /* ---------------- 通用按鈕與卡片美編樣式 ---------------- */
         .workflow-header {
             display: flex;
             justify-content: space-between;
@@ -351,7 +351,7 @@
             padding-bottom: 8px;
         }
 
-        /* 期程表格樣式 */
+        /* 期程與報價表格樣式 */
         .timeline-table-wrapper {
             overflow-x: auto;
         }
@@ -374,20 +374,66 @@
             color: var(--ruili-sidebar);
             font-weight: 600;
             text-align: center;
-            width: 18%;
         }
 
         .timeline-table td {
             color: var(--ruili-dark);
             background: #fff;
-            width: 20.5%;
         }
 
         .timeline-table tr:hover td {
             background-color: #FAF8F5;
         }
 
-        /* Lightbox 燈箱效果 (點擊圖片放大) */
+        /* 報價單專屬表格美編 */
+        .quotation-header-box {
+            background: #FAF8F5;
+            border: 1px solid var(--ruili-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .quotation-header-box div p {
+            margin-bottom: 4px;
+            color: var(--ruili-dark);
+        }
+
+        .q-table th {
+            background-color: var(--ruili-sidebar);
+            color: white;
+        }
+
+        .q-subtotal {
+            background-color: #FAF8F5 !important;
+            font-weight: 600;
+            color: var(--ruili-sidebar) !important;
+        }
+
+        .q-total-row {
+            font-weight: bold;
+            background-color: #F4ECE1 !important;
+        }
+
+        .quotation-notes {
+            margin-top: 20px;
+            background: #FAF8F5;
+            border-left: 4px solid var(--ruili-brand);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .quotation-notes ol {
+            padding-left: 20px;
+        }
+
+        /* Lightbox 燈箱效果 */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -494,6 +540,9 @@
                 flex: 1;
                 font-size: 0.95rem;
             }
+            .quotation-header-box {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -595,7 +644,7 @@
                             <span class="card-action-icon">➔</span>
                         </div>
 
-                        <div class="action-card" onclick="alert('報價單模組建置中')">
+                        <div class="action-card" onclick="switchModule('quotation', document.querySelectorAll('.menu-item')[2])">
                             <div class="card-top">
                                 <div class="card-icon">💰</div>
                                 <div class="card-title">睿立報價單</div>
@@ -603,7 +652,7 @@
                             <span class="card-action-icon">➔</span>
                         </div>
 
-                        <div class="action-card" onclick="alert('總結說明模組建置中')">
+                        <div class="action-card" onclick="switchModule('documents', document.querySelectorAll('.menu-item')[3])">
                             <div class="card-top">
                                 <div class="card-icon">📁</div>
                                 <div class="card-title">總結說明</div>
@@ -611,7 +660,7 @@
                             <span class="card-action-icon">➔</span>
                         </div>
 
-                        <div class="action-card" onclick="alert('專屬顧問諮詢模組建置中')">
+                        <div class="action-card" onclick="switchModule('contact', document.querySelectorAll('.menu-item')[4])">
                             <div class="card-top">
                                 <div class="card-icon">💬</div>
                                 <div class="card-title">專屬顧問諮詢</div>
@@ -647,35 +696,35 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>預計時辰表</th>
+                                    <th style="text-align: left;">預計時辰表</th>
                                     <td>2026年</td>
                                     <td>2030年</td>
                                     <td>2032年</td>
                                     <td>2034年</td>
                                 </tr>
                                 <tr>
-                                    <th>施作時間</th>
+                                    <th style="text-align: left;">施作時間</th>
                                     <td>1-2個月</td>
                                     <td>4年</td>
                                     <td>2+2年</td>
                                     <td>取得使照即換權狀</td>
                                 </tr>
                                 <tr>
-                                    <th>土地變更流程</th>
+                                    <th style="text-align: left;">土地變更流程</th>
                                     <td>簽約 + 送件</td>
                                     <td>通盤檢討開會</td>
                                     <td>計畫通過暫編</td>
                                     <td>正式編定</td>
                                 </tr>
                                 <tr>
-                                    <th>睿立收款期程</th>
+                                    <th style="text-align: left;">睿立收款期程</th>
                                     <td>10%</td>
                                     <td>20%</td>
                                     <td>60%</td>
                                     <td>10%</td>
                                 </tr>
                                 <tr>
-                                    <th>重要備註</th>
+                                    <th style="text-align: left;">重要備註</th>
                                     <td>每年3月繳納管輔導金10萬，至土地變更完成為止。</td>
                                     <td></td>
                                     <td>1. 更換權狀<br>2. 進入補照流程<br>3. 依照審查結果繳納代金相關費用。<br>4. 依照各局處所提審查意見改善，改善時間2年得展延。</td>
@@ -687,13 +736,271 @@
                 </div>
             </div>
 
-            <!-- 其它未展開模組預留位置 -->
+            <!-- ================= 3. 睿立報價單模組 ================= -->
             <div id="quotation-module" class="module-content">
-                <div class="section-title"><span>💰</span> 睿立報價單</div>
-                <p>報價單內容建置中...</p>
-                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                <div class="workflow-header">
+                    <div class="section-title" style="margin-bottom:0;">
+                        <span>💰</span> 睿立報價單 - 玖業光電科技有限公司
+                    </div>
+                    <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                </div>
+
+                <div class="workflow-card">
+                    <h3>📋 興辦事業計劃報價單</h3>
+                    
+                    <!-- 企業基本資訊 -->
+                    <div class="quotation-header-box">
+                        <div>
+                            <p><strong>客戶名稱：</strong>玖業光電科技有限公司</p>
+                            <p><strong>計畫地址：</strong>臺南市新市區大社里大社408之52號</p>
+                            <p><strong>連絡電話：</strong>06-5899871</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p><strong>發布日期：</strong>中華民國 115 年 8 月 17 日</p>
+                            <p><strong>經辦人員：</strong>樊靖畇 (電話：0911035868)</p>
+                            <p><strong>公司統編：</strong>90411790</p>
+                        </div>
+                    </div>
+
+                    <!-- 報價明細表格 -->
+                    <div class="timeline-table-wrapper">
+                        <table class="timeline-table q-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">項次</th>
+                                    <th style="width: 40%; text-align: left;">項目名稱</th>
+                                    <th style="width: 10%;">數量</th>
+                                    <th style="width: 15%; text-align: right;">單價 (NTD)</th>
+                                    <th style="width: 15%; text-align: right;">複價 (NTD)</th>
+                                    <th style="width: 10%; text-align: left;">備註</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 壹 -->
+                                <tr>
+                                    <td style="text-align: center; font-weight: bold;">壹</td>
+                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC;">土地相關審查</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">1</td>
+                                    <td>地形測繪 + 航測地籍測套繪</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">100,000</td>
+                                    <td style="text-align: right;">100,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">2</td>
+                                    <td>建築線指定</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">50,000</td>
+                                    <td style="text-align: right;">50,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">3</td>
+                                    <td>地質鑽探簽證費用</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td>另委託建築師</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">4</td>
+                                    <td>禁限建 (敏感區位) 查詢</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">50,000</td>
+                                    <td style="text-align: right;">50,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr class="q-subtotal">
+                                    <td colspan="4" style="text-align: right;">【壹】小計：</td>
+                                    <td style="text-align: right;">200,000</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- 貳 -->
+                                <tr>
+                                    <td style="text-align: center; font-weight: bold;">貳</td>
+                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC;">興辦事業計畫書</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">1</td>
+                                    <td>計劃書製作</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">1,000,000</td>
+                                    <td style="text-align: right;">1,000,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">2</td>
+                                    <td>建築物用途說明</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">250,000</td>
+                                    <td style="text-align: right;">250,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">3</td>
+                                    <td>土地使用規劃</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">250,000</td>
+                                    <td style="text-align: right;">250,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">4</td>
+                                    <td>建築規劃設計</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td>另委託建築師</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">5</td>
+                                    <td>搭排計劃書</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">6</td>
+                                    <td>審查計畫及簡報</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">150,000</td>
+                                    <td style="text-align: right;">150,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr class="q-subtotal">
+                                    <td colspan="4" style="text-align: right;">【貳】小計：</td>
+                                    <td style="text-align: right;">1,650,000</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- 參 -->
+                                <tr>
+                                    <td style="text-align: center; font-weight: bold;">參</td>
+                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC;">農業用地變更</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">1</td>
+                                    <td>農業用地變更使用說明書</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">250,000</td>
+                                    <td style="text-align: right;">250,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">2</td>
+                                    <td>變更相關審查及附件</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">80,000</td>
+                                    <td style="text-align: right;">80,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">3</td>
+                                    <td>會勘、審查簡報</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">80,000</td>
+                                    <td style="text-align: right;">80,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">4</td>
+                                    <td>計畫書核准同意函</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">-</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr class="q-subtotal">
+                                    <td colspan="4" style="text-align: right;">【參】小計：</td>
+                                    <td style="text-align: right;">410,000</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- 肆 -->
+                                <tr>
+                                    <td style="text-align: center; font-weight: bold;">肆</td>
+                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC;">變更編定申請</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">1</td>
+                                    <td>變更編定計畫書</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">80,000</td>
+                                    <td style="text-align: right;">80,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">2</td>
+                                    <td>會勘、審查簡報</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">30,000</td>
+                                    <td style="text-align: right;">30,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">3</td>
+                                    <td>計畫書核准同意函</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">-</td>
+                                    <td style="text-align: right;">0</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">4</td>
+                                    <td>地政變更申請</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td style="text-align: right;">30,000</td>
+                                    <td style="text-align: right;">30,000</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr class="q-subtotal">
+                                    <td colspan="4" style="text-align: right;">【肆】小計：</td>
+                                    <td style="text-align: right;">140,000</td>
+                                    <td></td>
+                                </tr>
+
+                                <!-- 總計列 -->
+                                <tr class="q-total-row">
+                                    <td colspan="4" style="text-align: right;">未稅合計：</td>
+                                    <td style="text-align: right;">2,400,000</td>
+                                    <td>NTD</td>
+                                </tr>
+                                <tr class="q-total-row">
+                                    <td colspan="4" style="text-align: right;">營業稅 (5%)：</td>
+                                    <td style="text-align: right;">120,000</td>
+                                    <td>NTD</td>
+                                </tr>
+                                <tr class="q-total-row" style="background: #E8D5C4 !important; font-size: 1rem;">
+                                    <td colspan="4" style="text-align: right;">含稅總計金額：</td>
+                                    <td style="text-align: right; color: #824317;">2,520,000</td>
+                                    <td>NTD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 備註與收款約定說明 -->
+                    <div class="quotation-notes">
+                        <p><strong>📌 備註與收款約定事項：</strong></p>
+                        <ol>
+                            <li>內容若有錯誤，請於五日內更正，敬請配合。</li>
+                            <li>付款方式：匯款、現金。幣別為新台幣。</li>
+                            <li><strong>匯款帳戶：</strong>合作金庫銀行 - 東高雄分行 (代號 006)，帳號：<code>0780-717-036196</code>。戶名：睿立資產管理顧問有限公司。</li>
+                            <li><strong>收款期程與比例：</strong>存入履保帳戶訂金 10%、計劃送件 20%、計劃核定 60%、土地暫編 10%。</li>
+                            <li><strong>履約信託專戶約定：</strong>以甲方將委託價金百分之三十存入專戶後，乙方始為送件；若委託價金未於規定期間存入，乙方得行使同時履行抗辯拒絕送件。</li>
+                            <li>送達方式：郵寄 / 親送 / LINE。</li>
+                        </ol>
+                    </div>
+
+                </div>
             </div>
 
+            <!-- ================= 4. 其它未展開模組預留位置 ================= -->
             <div id="documents-module" class="module-content">
                 <div class="section-title"><span>📁</span> 總結說明</div>
                 <p>總結說明內容建置中...</p>
@@ -709,7 +1016,7 @@
         </div>
     </main>
 
-    <!-- 圖片燈箱 Modal (點擊圖片放大檢視) -->
+    <!-- 圖片燈箱 Modal -->
     <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" src="" alt="放大預覽圖">
