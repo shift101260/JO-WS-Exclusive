@@ -360,7 +360,7 @@
 
         .timeline-table {
             width: 100%;
-            min-width: 750px; /* 確保在手機上有足夠寬度並可左右滑動 */
+            min-width: 750px;
             border-collapse: collapse;
             text-align: left;
             font-size: 0.88rem;
@@ -369,7 +369,7 @@
         .timeline-table th, .timeline-table td {
             border: 1px solid var(--ruili-border);
             padding: 14px 16px;
-            vertical-align: middle; /* 改為垂直置中，排版更整齊 */
+            vertical-align: middle;
         }
 
         .timeline-table th {
@@ -399,11 +399,17 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             font-size: 0.9rem;
+            text-align: left; /* 改為向左對齊 */
+        }
+
+        .quotation-header-box div {
+            text-align: left !important; /* 強制雙欄皆靠左對齊 */
         }
 
         .quotation-header-box div p {
             margin-bottom: 4px;
             color: var(--ruili-dark);
+            text-align: left;
         }
 
         .q-table th {
@@ -758,7 +764,7 @@
                             <p><strong>工廠地址：</strong>臺南市新市區大社里大社408之52號</p>
                             <p><strong>連絡電話：</strong>06-5899871</p>
                         </div>
-                        <div style="text-align: right;">
+                        <div>
                             <p><strong>報價日期：</strong>中華民國 115 年 8 月 17 日</p>
                             <p><strong>公司名稱：</strong>睿立資產管理顧問有限公司</p>
                             <p><strong>公司統編：</strong>90411790</p>
