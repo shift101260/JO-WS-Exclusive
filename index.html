@@ -233,102 +233,12 @@
             display: block;
         }
 
-        /* 功能卡片區 */
-        .section-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--ruili-sidebar);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .action-card {
-            background: #ffffff;
-            border: 1px solid var(--ruili-border);
-            border-radius: 14px;
-            padding: 20px 24px;
-            text-decoration: none;
-            color: var(--ruili-dark);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 130px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(41, 37, 36, 0.02);
-            cursor: pointer;
-        }
-
-        .action-card:hover {
-            border-color: var(--ruili-brand);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 163, 115, 0.12);
-            background: linear-gradient(135deg, #ffffff 0%, #FAF8F5 100%);
-        }
-
-        .card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .card-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: var(--ruili-bg);
-            border: 1px solid var(--ruili-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .card-action-icon {
-            font-size: 0.85rem;
-            color: var(--ruili-brand);
-            transition: transform 0.2s ease;
-        }
-
-        .action-card:hover .card-action-icon {
-            transform: translateX(4px);
-        }
-
-        .card-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--ruili-sidebar);
-            margin-top: 12px;
-        }
-
         /* ---------------- 專案執行流程細節美編樣式 ---------------- */
         .workflow-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-        }
-
-        .back-btn {
-            background: var(--ruili-sidebar);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .back-btn:hover {
-            background: var(--ruili-brand);
-            color: var(--ruili-sidebar);
         }
 
         .workflow-card {
@@ -351,7 +261,7 @@
             padding-bottom: 8px;
         }
 
-        /* 修復後的期程表格樣式 */
+        /* 期程表格樣式 */
         .timeline-table-wrapper {
             overflow-x: auto;
         }
@@ -371,7 +281,6 @@
             word-wrap: break-word;
         }
 
-        /* 第一欄（項目規劃標題）設定寬度與置中 */
         .timeline-table th.row-header {
             background-color: var(--ruili-bg);
             color: var(--ruili-sidebar);
@@ -380,7 +289,6 @@
             width: 20%;
         }
 
-        /* 表格最上方標題列（階段一~四） */
         .timeline-table thead th {
             background-color: var(--ruili-sidebar);
             color: #ffffff;
@@ -424,7 +332,7 @@
             color: #fff;
         }
 
-        /* Lightbox 燈箱效果 (點擊圖片放大) */
+        /* Lightbox 燈箱效果 */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -505,32 +413,6 @@
             .ruili-container {
                 padding: 16px;
             }
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            .action-card {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                min-height: auto;
-                padding: 14px 18px;
-                border-radius: 12px;
-            }
-            .card-top {
-                display: contents;
-            }
-            .card-icon {
-                width: 36px;
-                height: 36px;
-                border-radius: 8px;
-                margin-right: 12px;
-            }
-            .card-title {
-                margin-top: 0;
-                flex: 1;
-                font-size: 0.95rem;
-            }
         }
     </style>
 </head>
@@ -545,7 +427,7 @@
         <span style="font-size: 0.75rem; color: var(--ruili-brand);">威欣＆玖業｜專屬入口</span>
     </header>
 
-    <!-- 左側固定側邊欄 -->
+    <!-- 左側固定側邊欄（已移除首頁總覽） -->
     <aside class="ruili-sidebar">
         <div class="sidebar-top">
             <div class="sidebar-brand">
@@ -559,11 +441,7 @@
             </div>
 
             <nav class="sidebar-menu">
-                <a class="menu-item active" onclick="switchModule('home', this)">
-                    <span class="icon">🏠</span>
-                    <span>首頁總覽</span>
-                </a>
-                <a class="menu-item" onclick="switchModule('workflow', this)">
+                <a class="menu-item active" onclick="switchModule('workflow', this)">
                     <span class="icon">📊</span>
                     <span>專案執行流程</span>
                 </a>
@@ -617,58 +495,15 @@
                 </div>
             </header>
 
-            <!-- ================= 1. 首頁總覽模組 ================= -->
-            <div id="home-module" class="module-content active">
-                <section>
-                    <div class="section-title">
-                        <span>⚡</span> 專屬服務與報價模組
-                    </div>
-                    <div class="cards-grid">
-                        <div class="action-card" onclick="switchModule('workflow', document.querySelectorAll('.menu-item')[1])">
-                            <div class="card-top">
-                                <div class="card-icon">📊</div>
-                                <div class="card-title">專案執行流程</div>
-                            </div>
-                            <span class="card-action-icon">➔</span>
-                        </div>
-
-                        <div class="action-card" onclick="alert('報價單模組建置中')">
-                            <div class="card-top">
-                                <div class="card-icon">💰</div>
-                                <div class="card-title">睿立報價單</div>
-                            </div>
-                            <span class="card-action-icon">➔</span>
-                        </div>
-
-                        <div class="action-card" onclick="alert('總結說明模組建置中')">
-                            <div class="card-top">
-                                <div class="card-icon">📁</div>
-                                <div class="card-title">總結說明</div>
-                            </div>
-                            <span class="card-action-icon">➔</span>
-                        </div>
-
-                        <div class="action-card" onclick="alert('專屬顧問諮詢模組建置中')">
-                            <div class="card-top">
-                                <div class="card-icon">💬</div>
-                                <div class="card-title">專屬顧問諮詢</div>
-                            </div>
-                            <span class="card-action-icon">➔</span>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- ================= 2. 專案執行流程模組 ================= -->
-            <div id="workflow-module" class="module-content">
+            <!-- ================= 1. 專案執行流程模組（預設顯示） ================= -->
+            <div id="workflow-module" class="module-content active">
                 <div class="workflow-header">
-                    <div class="section-title" style="margin-bottom:0;">
+                    <div class="section-title" style="margin-bottom:0; font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;">
                         <span>📊</span> 專案執行流程與期程規劃
                     </div>
-                    <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
                 </div>
 
-                <!-- 階段期程對應表（已修復表格排版） -->
+                <!-- 階段期程對應表 -->
                 <div class="workflow-card">
                     <h3>⏱️ 專案執行階段與對應期程表</h3>
                     <div class="timeline-table-wrapper">
@@ -753,29 +588,26 @@
                 </div>
             </div>
 
-            <!-- 其它未展開模組預留位置 -->
+            <!-- ================= 2. 其它未展開模組 ================= -->
             <div id="quotation-module" class="module-content">
-                <div class="section-title"><span>💰</span> 睿立報價單</div>
-                <p>報價單內容建置中...</p>
-                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                <div class="section-title" style="font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;"><span>💰</span> 睿立報價單</div>
+                <p style="margin-top: 16px;">報價單內容建置中...</p>
             </div>
 
             <div id="documents-module" class="module-content">
-                <div class="section-title"><span>📁</span> 總結說明</div>
-                <p>總結說明內容建置中...</p>
-                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                <div class="section-title" style="font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;"><span>📁</span> 總結說明</div>
+                <p style="margin-top: 16px;">總結說明內容建置中...</p>
             </div>
 
             <div id="contact-module" class="module-content">
-                <div class="section-title"><span>💬</span> 專屬顧問諮詢</div>
-                <p>專屬顧問諮詢內容建置中...</p>
-                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                <div class="section-title" style="font-size: 1rem; font-weight: 600; color: var(--ruili-sidebar); display: flex; align-items: center; gap: 8px;"><span>💬</span> 專屬顧問諮詢</div>
+                <p style="margin-top: 16px;">專屬顧問諮詢內容建置中...</p>
             </div>
 
         </div>
     </main>
 
-    <!-- 圖片燈箱 Modal (點擊圖片放大檢視) -->
+    <!-- 圖片燈箱 Modal -->
     <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightbox-img" src="" alt="放大預覽圖">
