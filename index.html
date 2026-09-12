@@ -24,44 +24,46 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
+        /* 1. 基礎畫面配置：禁止全頁面亂滾，強制左右分層 */
         body {
             background-color: var(--ruili-bg);
             color: var(--ruili-dark);
-            min-height: 100vh;
             display: flex;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        /* ---------------- 左側固定側邊欄 ---------------- */
-        .sidebar {
-            width: 260px;
+        /* 2. 左側固定側邊欄 (桌機端) */
+        .ruili-sidebar {
+            width: 16rem; /* 256px */
             background-color: var(--ruili-sidebar);
-            color: #ffffff;
+            color: #d1d5db;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 24px 16px;
+            border-right: 1px solid var(--ruili-dark);
+            flex-shrink: 0;
+            height: 100vh;
             position: fixed;
             top: 0;
-            bottom: 0;
             left: 0;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
             z-index: 100;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar-top {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 24px;
+            padding: 24px 16px;
         }
 
         .sidebar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 20px;
+            padding-bottom: 16px;
         }
 
         .sidebar-logo-box {
@@ -73,6 +75,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .sidebar-logo-box img {
@@ -86,13 +89,14 @@
             font-weight: 600;
             letter-spacing: 1px;
             color: #ffffff;
+            margin: 0;
         }
 
         .sidebar-brand-text p {
             font-size: 0.7rem;
             color: var(--ruili-brand);
             letter-spacing: 0.5px;
-            margin-top: 2px;
+            margin: 2px 0 0 0;
         }
 
         .sidebar-menu {
@@ -125,26 +129,30 @@
             font-weight: 600;
         }
 
-        .menu-item .icon {
-            font-size: 1.1rem;
-        }
-
         .sidebar-footer {
             font-size: 0.75rem;
             color: #9ca3af;
             text-align: center;
-            padding-top: 15px;
+            padding: 20px 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* ---------------- 右側主內容區 ---------------- */
-        .main-content {
-            margin-left: 260px; /* 預留左側側邊欄空間 */
+        /* 3. 右側主畫面內容區域 */
+        .ruili-main {
+            margin-left: 16rem; /* 與側邊欄寬度一致 */
             flex: 1;
-            padding: 40px;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: var(--ruili-bg);
+        }
+
+        .ruili-container {
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         /* 頂部標題與雙 LOGO 橫幅 */
@@ -157,13 +165,14 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 20px rgba(41, 37, 36, 0.03);
+            margin-bottom: 30px;
         }
 
         .header-titles h1 {
             font-size: 1.35rem;
             font-weight: 700;
             color: var(--ruili-sidebar);
-            margin-bottom: 6px;
+            margin: 0 0 6px 0;
         }
 
         .header-titles .badge {
@@ -175,7 +184,6 @@
             border-radius: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            margin-top: 4px;
         }
 
         .header-logos {
@@ -232,8 +240,6 @@
             min-height: 160px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(41, 37, 36, 0.02);
-            position: relative;
-            overflow: hidden;
         }
 
         .action-card:hover {
@@ -278,14 +284,13 @@
             margin-top: 15px;
         }
 
-        /* ---------------- RWD 響應式調整 ---------------- */
-        @media (max-width: 900px) {
-            .sidebar {
-                width: 70px;
-                padding: 16px 10px;
+        /* 4. 手機直式響應式設定 (RWD - 螢幕小於 768px 時觸發) */
+        @media (max-width: 768px) {
+            .ruili-sidebar {
+                width: 70px; /* 手機版側邊欄縮減為僅顯示圖示 */
             }
             .sidebar-brand-text, .sidebar-footer span, .menu-item span {
-                display: none; /* 手機版側邊欄只留圖示 */
+                display: none;
             }
             .sidebar-brand {
                 justify-content: center;
@@ -294,8 +299,10 @@
                 justify-content: center;
                 padding: 12px;
             }
-            .main-content {
+            .ruili-main {
                 margin-left: 70px;
+            }
+            .ruili-container {
                 padding: 20px;
             }
             .content-header {
@@ -310,7 +317,7 @@
 <body>
 
     <!-- 左側固定側邊欄 -->
-    <aside class="sidebar">
+    <aside class="ruili-sidebar">
         <div class="sidebar-top">
             <div class="sidebar-brand">
                 <div class="sidebar-logo-box">
@@ -352,62 +359,64 @@
     </aside>
 
     <!-- 右側主內容區 -->
-    <main class="main-content">
-        <!-- 頂部資訊列 -->
-        <header class="content-header">
-            <div class="header-titles">
-                <h1>玖業光電科技有限公司 & 威欣系統股份有限公司</h1>
-                <div class="badge">專屬客戶服務與報價入口系統</div>
-            </div>
-            <div class="header-logos">
-                <div class="header-logo-box">
-                    <img src="./logo1.png" alt="Logo 1">
+    <main class="ruili-main">
+        <div class="ruili-container">
+            <!-- 頂部資訊列 -->
+            <header class="content-header">
+                <div class="header-titles">
+                    <h1>玖業光電科技有限公司 & 威欣系統股份有限公司</h1>
+                    <div class="badge">專屬客戶服務與報價入口系統</div>
                 </div>
-                <div class="header-logo-box">
-                    <img src="./logo2.png" alt="Logo 2">
+                <div class="header-logos">
+                    <div class="header-logo-box">
+                        <img src="./logo1.png" alt="Logo 1">
+                    </div>
+                    <div class="header-logo-box">
+                        <img src="./logo2.png" alt="Logo 2">
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <!-- 常用功能專區 -->
-        <section>
-            <div class="section-title">
-                <span>⚡</span> 專屬服務與報價模組
-            </div>
-            <div class="cards-grid">
-                <a href="#workflow" class="action-card" onclick="openModule('workflow')">
-                    <div class="card-top">
-                        <div class="card-icon">📊</div>
-                        <span class="card-action-icon">➔</span>
-                    </div>
-                    <div class="card-title">專案執行流程</div>
-                </a>
+            <!-- 常用功能專區 -->
+            <section>
+                <div class="section-title">
+                    <span>⚡</span> 專屬服務與報價模組
+                </div>
+                <div class="cards-grid">
+                    <a href="#workflow" class="action-card" onclick="openModule('workflow')">
+                        <div class="card-top">
+                            <div class="card-icon">📊</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">專案執行流程</div>
+                    </a>
 
-                <a href="#quotation" class="action-card" onclick="openModule('quotation')">
-                    <div class="card-top">
-                        <div class="card-icon">💰</div>
-                        <span class="card-action-icon">➔</span>
-                    </div>
-                    <div class="card-title">睿立報價單</div>
-                </a>
+                    <a href="#quotation" class="action-card" onclick="openModule('quotation')">
+                        <div class="card-top">
+                            <div class="card-icon">💰</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">睿立報價單</div>
+                    </a>
 
-                <a href="#documents" class="action-card" onclick="openModule('documents')">
-                    <div class="card-top">
-                        <div class="card-icon">📁</div>
-                        <span class="card-action-icon">➔</span>
-                    </div>
-                    <div class="card-title">總結說明</div>
-                </a>
+                    <a href="#documents" class="action-card" onclick="openModule('documents')">
+                        <div class="card-top">
+                            <div class="card-icon">📁</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">總結說明</div>
+                    </a>
 
-                <a href="#contact" class="action-card" onclick="openModule('contact')">
-                    <div class="card-top">
-                        <div class="card-icon">💬</div>
-                        <span class="card-action-icon">➔</span>
-                    </div>
-                    <div class="card-title">專屬顧問諮詢</div>
-                </a>
-            </div>
-        </section>
+                    <a href="#contact" class="action-card" onclick="openModule('contact')">
+                        <div class="card-top">
+                            <div class="card-icon">💬</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">專屬顧問諮詢</div>
+                    </a>
+                </div>
+            </section>
+        </div>
     </main>
 
     <script>
