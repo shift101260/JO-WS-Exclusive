@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>睿立 - 專屬客戶服務系統</title>
-    <!-- 引入您建立的外部樣式表 -->
+    <!-- 引入您的外部變數與排版檔 -->
     <link rel="stylesheet" href="./variables.css">
     <link rel="stylesheet" href="./layout.css">
     <style>
-        /* 頁面專屬的局部元件樣式（全域排版與色號已交由外部 CSS 控管） */
+        /* 僅針對內部元件進行精緻化微調，不破壞 layout.css 的全域骨架 */
         * {
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
-        /* 側邊欄品牌與選單微調 */
+        /* 側邊欄內部排版對齊 */
         .sidebar-top {
             display: flex;
             flex-direction: column;
@@ -39,6 +39,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .sidebar-logo-box img {
@@ -99,7 +100,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* 內容區塊內部設計 */
+        /* 右側主內容區塊細節 */
         .content-header {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
@@ -230,7 +231,7 @@
 </head>
 <body>
 
-    <!-- 左側固定側邊欄 (對應 layout.css 的 .ruili-sidebar) -->
+    <!-- 使用您 layout.css 專用的 .ruili-sidebar 類別 -->
     <aside class="ruili-sidebar">
         <div class="sidebar-top">
             <div class="sidebar-brand">
@@ -272,7 +273,7 @@
         </div>
     </aside>
 
-    <!-- 右側主內容區 (對應 layout.css 的 .ruili-main 與 .ruili-container) -->
+    <!-- 使用您 layout.css 專用的 .ruili-main 與 .ruili-container 類別 -->
     <main class="ruili-main">
         <div class="ruili-container">
             <!-- 頂部資訊列 -->
