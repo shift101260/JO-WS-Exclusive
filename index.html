@@ -160,28 +160,62 @@
             width: 100%;
         }
 
-        /* 頂部標題與雙 LOGO 橫幅 */
+        /* 頂部公司標題與獨立 LOGO 配置區 */
         .content-header {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
             border-radius: 20px;
             padding: 30px 40px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 20px;
             box-shadow: 0 4px 20px rgba(41, 37, 36, 0.03);
             margin-bottom: 30px;
         }
 
-        .header-titles h1 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--ruili-sidebar);
-            margin: 0 0 6px 0;
-            line-height: 1.4;
+        .company-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
-        .header-titles .badge {
+        .company-logo-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--ruili-bg);
+            border: 1px solid var(--ruili-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .company-logo-box img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+        }
+
+        .company-info h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ruili-sidebar);
+            margin: 0;
+        }
+
+        .header-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--ruili-border);
+            padding-top: 16px;
+            margin-top: 4px;
+        }
+
+        .badge {
             display: inline-block;
             font-size: 0.75rem;
             background-color: var(--ruili-pink);
@@ -190,31 +224,6 @@
             border-radius: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
-        }
-
-        .header-logos {
-            display: flex;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .header-logo-box {
-            width: 55px;
-            height: 55px;
-            border-radius: 14px;
-            background: var(--ruili-bg);
-            border: 1px solid var(--ruili-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-
-        .header-logo-box img {
-            max-width: 85%;
-            max-height: 85%;
-            object-fit: contain;
         }
 
         /* 功能卡片區 */
@@ -297,7 +306,6 @@
             body {
                 flex-direction: column;
             }
-            /* 隱藏桌機側邊欄，改顯示頂部導覽列 */
             .ruili-sidebar {
                 display: none; 
             }
@@ -338,21 +346,19 @@
                 padding: 16px;
             }
             .content-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
                 padding: 20px;
                 border-radius: 16px;
+                gap: 16px;
             }
-            .header-titles h1 {
-                font-size: 1.1rem;
+            .company-info h1 {
+                font-size: 1.05rem;
             }
-            .header-logos {
-                width: 100%;
-                justify-content: flex-start;
+            .company-logo-box {
+                width: 42px;
+                height: 42px;
             }
-            
-            /* 手機版卡片改為類似截圖的滿版長條按鈕清單 */
+
+            /* 手機版卡片改為滿版長條按鈕清單 */
             .cards-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -366,7 +372,7 @@
                 border-radius: 16px;
             }
             .card-top {
-                display: contents; /* 讓內部元素重新排列為左右結構 */
+                display: contents;
             }
             .card-icon {
                 width: 40px;
@@ -437,20 +443,29 @@
     <!-- 右側主內容區 -->
     <main class="ruili-main">
         <div class="ruili-container">
-            <!-- 頂部資訊列 -->
+            <!-- 頂部資訊列：個別公司名稱左側帶各自的 LOGO -->
             <header class="content-header">
-                <div class="header-titles">
-                    <h1>玖業光電科技有限公司</h1>
-                    <h1>威欣系統股份有限公司</h1>
-                    <div class="badge">專屬入口</div>
+                <div class="company-row">
+                    <div class="company-logo-box">
+                        <img src="./logo1.png" alt="玖業光電 Logo">
+                    </div>
+                    <div class="company-info">
+                        <h1>玖業光電科技有限公司</h1>
+                    </div>
                 </div>
-                <div class="header-logos">
-                    <div class="header-logo-box">
-                        <img src="./logo1.png" alt="Logo 1">
+
+                <div class="company-row">
+                    <div class="company-logo-box">
+                        <img src="./logo2.png" alt="威欣系統 Logo">
                     </div>
-                    <div class="header-logo-box">
-                        <img src="./logo2.png" alt="Logo 2">
+                    <div class="company-info">
+                        <h1>威欣系統股份有限公司</h1>
                     </div>
+                </div>
+
+                <div class="header-bottom-row">
+                    <div class="badge">專屬入口</div>
+                    <span style="font-size: 0.8rem; color: var(--ruili-dark); opacity: 0.7;">Client Services & Quotation Portal</span>
                 </div>
             </header>
 
