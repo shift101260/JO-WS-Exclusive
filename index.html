@@ -24,16 +24,16 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
-        /* 1. 基礎畫面配置：禁止全頁面亂滾，強制左右分層 */
+        /* 1. 基礎畫面配置 */
         body {
             background-color: var(--ruili-bg);
             color: var(--ruili-dark);
             display: flex;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* 2. 左側固定側邊欄 (桌機端) */
+        /* 2. 左側固定側邊欄 (桌機端預設顯示) */
         .ruili-sidebar {
             width: 16rem; /* 256px */
             background-color: var(--ruili-sidebar);
@@ -137,15 +137,20 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        /* 手機版專用頂部導覽列（預設電腦版隱藏） */
+        .mobile-header-bar {
+            display: none;
+        }
+
         /* 3. 右側主畫面內容區域 */
         .ruili-main {
-            margin-left: 16rem; /* 與側邊欄寬度一致 */
+            margin-left: 16rem; /* 預留桌機側邊欄寬度 */
             flex: 1;
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            overflow-y: auto;
+            min-height: 100vh;
             background-color: var(--ruili-bg);
+            overflow-y: auto;
         }
 
         .ruili-container {
@@ -173,6 +178,7 @@
             font-weight: 700;
             color: var(--ruili-sidebar);
             margin: 0 0 6px 0;
+            line-height: 1.4;
         }
 
         .header-titles .badge {
@@ -189,6 +195,7 @@
         .header-logos {
             display: flex;
             gap: 12px;
+            flex-shrink: 0;
         }
 
         .header-logo-box {
@@ -284,39 +291,82 @@
             margin-top: 15px;
         }
 
-        /* 4. 手機直式響應式設定 (RWD - 螢幕小於 768px 時觸發) */
+        /* 4. 手機直式響應式優化 (RWD - 螢幕小於 768px 時觸發) */
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            /* 手機版將側邊欄隱藏，改為上方簡約導覽列 */
             .ruili-sidebar {
-                width: 70px; /* 手機版側邊欄縮減為僅顯示圖示 */
+                display: none; 
             }
-            .sidebar-brand-text, .sidebar-footer span, .menu-item span {
-                display: none;
+            .mobile-header-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 20px;
+                background-color: var(--ruili-sidebar);
+                color: white;
+                border-bottom: 1px solid var(--ruili-dark);
+                position: sticky;
+                top: 0;
+                z-index: 50;
             }
-            .sidebar-brand {
-                justify-content: center;
+            .mobile-brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
             }
-            .menu-item {
-                justify-content: center;
-                padding: 12px;
+            .mobile-brand img {
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+                background: #fff;
+                object-fit: contain;
+            }
+            .mobile-brand span {
+                font-size: 0.9rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
             }
             .ruili-main {
-                margin-left: 70px;
+                margin-left: 0 !important; /* 解除桌機的左側留白 */
+                width: 100%;
             }
             .ruili-container {
-                padding: 20px;
+                padding: 16px;
             }
             .content-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
+                gap: 16px;
                 padding: 20px;
+            }
+            .header-titles h1 {
+                font-size: 1.1rem;
+            }
+            .header-logos {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr; /* 手機上卡片單欄排列，點擊更舒適 */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 左側固定側邊欄 -->
+    <!-- 手機專用頂部導覽列 (僅在手機螢幕顯示) -->
+    <header class="mobile-header-bar">
+        <div class="mobile-brand">
+            <img src="./ruili-logo.png" alt="Logo">
+            <span>睿立集團 ERP</span>
+        </div>
+        <span style="font-size: 0.8rem; color: var(--ruili-brand);">Client Portal</span>
+    </header>
+
+    <!-- 左側固定側邊欄 (桌機端顯示) -->
     <aside class="ruili-sidebar">
         <div class="sidebar-top">
             <div class="sidebar-brand">
@@ -330,6 +380,10 @@
             </div>
 
             <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="icon">🏠</span>
+                    <span>首頁總覽</span>
+                </a>
                 <a href="#workflow" class="menu-item" onclick="openModule('workflow')">
                     <span class="icon">📊</span>
                     <span>專案執行流程</span>
