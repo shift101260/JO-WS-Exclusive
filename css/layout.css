@@ -1,68 +1,344 @@
-/**
- * 睿立集團系統｜全域排版與 RWD 響應式架構 (layout.css)
- * 專為桌機與手機直式操作設計之骨架規範
- */
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>睿立 - 專屬客戶服務系統</title>
+    <!-- 引入您的外部變數與排版檔 -->
+    <link rel="stylesheet" href="./variables.css">
+    <link rel="stylesheet" href="./layout.css">
+    <style>
+        /* 僅針對內部元件進行精緻化微調，不破壞 layout.css 的全域骨架 */
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
 
-/* 1. 基礎畫面配置：禁止全頁面亂滾，強制上下分層 */
-body {
-    background-color: var(--ruili-bg);
-    color: var(--ruili-dark);
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
+        /* 側邊欄內部排版對齊 */
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 20px 16px;
+        }
 
-/* 2. 側邊欄預設樣式 (桌機端) - 確保有正確的深色背景與定位 */
-.ruili-sidebar {
-    width: 260px;
-    background-color: var(--ruili-sidebar); /* 確保套用深褐炭色變數 */
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-right: 1px solid var(--ruili-dark);
-    flex-shrink: 0;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 16px;
+        }
 
-/* 3. 主畫面內容區域 - 預留左側側邊欄的寬度空間 */
-.ruili-main {
-    margin-left: 260px; /* 與側邊欄寬度一致 */
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow-y: auto;
-    position: relative;
-    background-color: var(--ruili-bg);
-}
+        .sidebar-logo-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
 
-.ruili-container {
-    padding: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-}
+        .sidebar-logo-box img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+        }
 
-/* 4. 手機直式響應式設定 (RWD - 螢幕小於 900px 時觸發) */
-@media (max-width: 900px) {
-    .ruili-sidebar {
-        width: 70px; /* 手機或小螢幕時側邊欄縮減為僅顯示圖示 */
-    }
+        .sidebar-brand-text h2 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
 
-    .ruili-main {
-        margin-left: 70px;
-    }
+        .sidebar-brand-text p {
+            font-size: 0.7rem;
+            color: var(--ruili-brand);
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
 
-    .ruili-container {
-        padding: 20px;
-    }
-}
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background-color: #3E3B3A;
+            color: #ffffff;
+        }
+
+        .menu-item.active {
+            background-color: var(--ruili-brand);
+            color: var(--ruili-sidebar);
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* 右側主內容區塊細節 */
+        .content-header {
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
+            border-radius: 20px;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(41, 37, 36, 0.03);
+            margin-bottom: 30px;
+        }
+
+        .header-titles h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--ruili-sidebar);
+            margin-bottom: 6px;
+        }
+
+        .header-titles .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            background-color: var(--ruili-pink);
+            color: var(--ruili-dark);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .header-logos {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-logo-box {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: var(--ruili-bg);
+            border: 1px solid var(--ruili-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .header-logo-box img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ruili-sidebar);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .action-card {
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: var(--ruili-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(41, 37, 36, 0.02);
+        }
+
+        .action-card:hover {
+            border-color: var(--ruili-brand);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(212, 163, 115, 0.15);
+            background: linear-gradient(135deg, #ffffff 0%, #FAF8F5 100%);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--ruili-bg);
+            border: 1px solid var(--ruili-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .card-action-icon {
+            font-size: 0.9rem;
+            color: var(--ruili-brand);
+            transition: transform 0.2s ease;
+        }
+
+        .action-card:hover .card-action-icon {
+            transform: translateX(4px);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ruili-sidebar);
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 使用您 layout.css 專用的 .ruili-sidebar 類別 -->
+    <aside class="ruili-sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo-box">
+                    <img src="./ruili-logo.png" alt="Ruili Logo">
+                </div>
+                <div class="sidebar-brand-text">
+                    <h2>睿立</h2>
+                    <p>RUILI GROUP ERP</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span class="icon">🏠</span>
+                    <span>首頁總覽</span>
+                </a>
+                <a href="#workflow" class="menu-item" onclick="openModule('workflow')">
+                    <span class="icon">📊</span>
+                    <span>專案執行流程</span>
+                </a>
+                <a href="#quotation" class="menu-item" onclick="openModule('quotation')">
+                    <span class="icon">💰</span>
+                    <span>睿立報價單</span>
+                </a>
+                <a href="#documents" class="menu-item" onclick="openModule('documents')">
+                    <span class="icon">📁</span>
+                    <span>總結說明</span>
+                </a>
+                <a href="#contact" class="menu-item" onclick="openModule('contact')">
+                    <span class="icon">💬</span>
+                    <span>專屬顧問諮詢</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <span>© 2026 Ruili</span>
+        </div>
+    </aside>
+
+    <!-- 使用您 layout.css 專用的 .ruili-main 與 .ruili-container 類別 -->
+    <main class="ruili-main">
+        <div class="ruili-container">
+            <!-- 頂部資訊列 -->
+            <header class="content-header">
+                <div class="header-titles">
+                    <h1>玖業光電科技有限公司 & 威欣系統股份有限公司</h1>
+                    <div class="badge">專屬客戶服務系統</div>
+                </div>
+                <div class="header-logos">
+                    <div class="header-logo-box">
+                        <img src="./logo1.png" alt="Logo 1">
+                    </div>
+                    <div class="header-logo-box">
+                        <img src="./logo2.png" alt="Logo 2">
+                    </div>
+                </div>
+            </header>
+
+            <!-- 常用功能專區 -->
+            <section>
+                <div class="section-title">
+                    <span>⚡</span> 專屬服務與報價模組
+                </div>
+                <div class="cards-grid">
+                    <a href="#workflow" class="action-card" onclick="openModule('workflow')">
+                        <div class="card-top">
+                            <div class="card-icon">📊</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">專案執行流程</div>
+                    </a>
+
+                    <a href="#quotation" class="action-card" onclick="openModule('quotation')">
+                        <div class="card-top">
+                            <div class="card-icon">💰</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">睿立報價單</div>
+                    </a>
+
+                    <a href="#documents" class="action-card" onclick="openModule('documents')">
+                        <div class="card-top">
+                            <div class="card-icon">📁</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">總結說明</div>
+                    </a>
+
+                    <a href="#contact" class="action-card" onclick="openModule('contact')">
+                        <div class="card-top">
+                            <div class="card-icon">💬</div>
+                            <span class="card-action-icon">➔</span>
+                        </div>
+                        <div class="card-title">專屬顧問諮詢</div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function openModule(moduleName) {
+            console.log("切換至模組: " + moduleName);
+        }
+    </script>
+
+</body>
+</html>
