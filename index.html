@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>專屬客戶服務與報價系統</title>
+    <title>玖業光電 & 威欣系統 - 專屬客戶服務與報價系統</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.75);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
-            --btn-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            --btn-hover: linear-gradient(135deg, #334155 100%, #1e293b 0%);
-            --btn-border: #38bdf8;
+            /* 黑金風格色系變數 */
+            --bg-color: #0b0c10;
+            --card-bg: rgba(20, 22, 27, 0.85);
+            --border-color: rgba(212, 175, 55, 0.25); /* 金色微光邊框 */
+            --border-hover: rgba(212, 175, 55, 0.8);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --accent-glow: rgba(212, 175, 55, 0.12);
+            --btn-bg: linear-gradient(135deg, rgba(30, 32, 40, 0.9) 0%, rgba(15, 17, 21, 0.95) 100%);
+            --btn-hover: linear-gradient(135deg, rgba(45, 48, 60, 0.95) 0%, rgba(20, 22, 28, 1) 100%);
         }
 
         * {
@@ -27,8 +30,8 @@
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(180, 140, 40, 0.04) 0%, transparent 45%);
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
@@ -37,22 +40,35 @@
             padding: 20px;
         }
 
-        /* 電子名片外框容器 */
+        /* 質感黑金電子名片外框容器 */
         .card-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 460px;
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 36px 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-                        0 0 80px var(--accent-glow);
+            padding: 40px 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 
+                        0 0 60px var(--accent-glow);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* 雙 LOGO 區塊 */
+        /* 頂部奢華金線裝飾 */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+
+        /* 雙 LOGO 顯示區 */
         .logo-section {
             display: flex;
             justify-content: center;
@@ -62,16 +78,21 @@
         }
 
         .logo-box {
-            width: 70px;
-            height: 70px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.05);
+            width: 75px;
+            height: 75px;
+            border-radius: 18px;
+            background: rgba(15, 17, 21, 0.8);
             border: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease;
+        }
+
+        .logo-box:hover {
+            border-color: var(--gold-primary);
         }
 
         .logo-box img {
@@ -80,18 +101,26 @@
             object-fit: contain;
         }
 
-        /* 標題與說明 */
-        .profile-info h1 {
-            font-size: 1.35rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
+        /* 公司名稱與標題區 */
+        .profile-info {
+            margin-bottom: 32px;
         }
 
-        .profile-info p {
+        .profile-info h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .profile-info .sub-title {
             font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
+            color: var(--gold-primary);
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            text-transform: uppercase;
         }
 
         /* 按鈕群組 */
@@ -113,21 +142,21 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .menu-btn:hover {
             background: var(--btn-hover);
-            border-color: var(--btn-border);
+            border-color: var(--border-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
         }
 
         .menu-btn .btn-content {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .menu-btn .icon {
@@ -135,14 +164,15 @@
         }
 
         .menu-btn .arrow {
-            color: var(--text-secondary);
+            color: var(--gold-primary);
             font-size: 0.9rem;
             transition: transform 0.2s ease;
+            opacity: 0.7;
         }
 
         .menu-btn:hover .arrow {
-            transform: translateX(3px);
-            color: var(--btn-border);
+            transform: translateX(4px);
+            opacity: 1;
         }
 
         /* 底部版權宣告 */
@@ -150,20 +180,21 @@
             margin-top: 30px;
             font-size: 0.75rem;
             color: var(--text-secondary);
-            opacity: 0.7;
+            opacity: 0.6;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
     <div class="card-container">
-        <!-- 雙 LOGO 顯示區 (使用相對路徑讀取同資料夾的圖片) -->
+        <!-- 雙 LOGO 顯示區 -->
         <div class="logo-section">
             <div class="logo-box">
-                <img src="./logo1.png" alt="Company Logo 1">
+                <img src="./logo1.png" alt="玖業光電 Logo">
             </div>
             <div class="logo-box">
-                <img src="./logo2.png" alt="Company Logo 2">
+                <img src="./logo2.png" alt="威欣系統 Logo">
             </div>
         </div>
 
@@ -171,7 +202,7 @@
         <div class="profile-info">
             <h1>玖業光電科技有限公司</h1>
             <h1>威欣系統股份有限公司</h1>
-            <p>專屬入口系統</p>
+            <div class="sub-title">專屬客戶服務與報價入口</div>
         </div>
 
         <!-- 四個功能按鈕 -->
@@ -211,7 +242,7 @@
 
         <!-- 底部小字 -->
         <div class="footer-note">
-            Secure Client Portal © 2026
+            RUILI GROUP CLIENT PORTAL © 2026
         </div>
     </div>
 
