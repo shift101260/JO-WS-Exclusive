@@ -316,6 +316,11 @@
             margin-bottom: 20px;
         }
 
+        .header-btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
         .back-btn {
             background: var(--ruili-sidebar);
             color: white;
@@ -329,6 +334,21 @@
         .back-btn:hover {
             background: var(--ruili-brand);
             color: var(--ruili-sidebar);
+        }
+
+        .pdf-btn {
+            background: var(--ruili-brand);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .pdf-btn:hover {
+            background: #b88a5d;
         }
 
         .workflow-card {
@@ -351,25 +371,25 @@
             padding-bottom: 8px;
         }
 
-        /* 期程與報價表格樣式 (支援手機橫向捲動) */
+        /* 期程與報價表格樣式 */
         .timeline-table-wrapper {
             width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            overflow-x: visible;
         }
 
         .timeline-table {
             width: 100%;
-            min-width: 750px;
             border-collapse: collapse;
             text-align: left;
             font-size: 0.88rem;
+            table-layout: fixed;
         }
 
         .timeline-table th, .timeline-table td {
             border: 1px solid var(--ruili-border);
-            padding: 14px 16px;
+            padding: 10px 8px;
             vertical-align: middle;
+            word-break: break-all;
         }
 
         .timeline-table th {
@@ -399,11 +419,11 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             font-size: 0.9rem;
-            text-align: left; /* 改為向左對齊 */
+            text-align: left;
         }
 
         .quotation-header-box div {
-            text-align: left !important; /* 強制雙欄皆靠左對齊 */
+            text-align: left !important;
         }
 
         .quotation-header-box div p {
@@ -480,6 +500,48 @@
             font-weight: bold;
         }
 
+        /* ---------------- A4 直式列印專用設定 (PDF 匯出核心) ---------------- */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            .ruili-sidebar, 
+            .mobile-header-bar, 
+            .content-header, 
+            .workflow-header button,
+            .cards-grid {
+                display: none !important;
+            }
+            .ruili-main {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+            .ruili-container {
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .module-content {
+                display: none !important;
+            }
+            .module-content.active {
+                display: block !important;
+            }
+            .workflow-card {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .workflow-header {
+                margin-bottom: 10px !important;
+            }
+        }
+
         /* RWD 適應 */
         @media (max-width: 768px) {
             body {
@@ -521,7 +583,7 @@
                 width: 100%;
             }
             .ruili-container {
-                padding: 16px;
+                padding: 12px;
             }
             .cards-grid {
                 grid-template-columns: 1fr;
@@ -551,6 +613,13 @@
             }
             .quotation-header-box {
                 grid-template-columns: 1fr;
+                padding: 12px;
+            }
+            .timeline-table {
+                font-size: 0.75rem;
+            }
+            .timeline-table th, .timeline-table td {
+                padding: 6px 4px;
             }
         }
     </style>
@@ -686,7 +755,10 @@
                     <div class="section-title" style="margin-bottom:0;">
                         <span>📊</span> 專案執行流程與期程規劃
                     </div>
-                    <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                    <div class="header-btn-group">
+                        <button class="pdf-btn" onclick="exportPDF()">🖨️ 匯出 PDF</button>
+                        <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                    </div>
                 </div>
 
                 <!-- 階段期程對應表 -->
@@ -696,11 +768,11 @@
                         <table class="timeline-table">
                             <thead>
                                 <tr>
-                                    <th style="width: 16%;">項目規劃</th>
-                                    <th style="width: 21%;">階段一</th>
-                                    <th style="width: 21%;">階段二</th>
-                                    <th style="width: 21%;">階段三</th>
-                                    <th style="width: 21%;">階段四</th>
+                                    <th style="width: 20%;">項目規劃</th>
+                                    <th style="width: 20%;">階段一</th>
+                                    <th style="width: 20%;">階段二</th>
+                                    <th style="width: 20%;">階段三</th>
+                                    <th style="width: 20%;">階段四</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -751,7 +823,10 @@
                     <div class="section-title" style="margin-bottom:0;">
                         <span>💰</span> 睿立報價單
                     </div>
-                    <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                    <div class="header-btn-group">
+                        <button class="pdf-btn" onclick="exportPDF()">🖨️ 匯出 PDF</button>
+                        <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                    </div>
                 </div>
 
                 <div class="workflow-card">
@@ -780,11 +855,11 @@
                         <table class="timeline-table q-table">
                             <thead>
                                 <tr>
-                                    <th style="width: 10%;">項次</th>
-                                    <th style="width: 40%; text-align: left;">項目名稱</th>
+                                    <th style="width: 12%;">項次</th>
+                                    <th style="width: 38%; text-align: left;">項目名稱</th>
                                     <th style="width: 10%;">數量</th>
-                                    <th style="width: 15%; text-align: right;">單價 (NTD)</th>
-                                    <th style="width: 15%; text-align: right;">複價 (NTD)</th>
+                                    <th style="width: 15%; text-align: right;">單價</th>
+                                    <th style="width: 15%; text-align: right;">複價</th>
                                     <th style="width: 10%; text-align: left;">備註</th>
                                 </tr>
                             </thead>
@@ -1013,17 +1088,38 @@
                 </div>
             </div>
 
-            <!-- ================= 4. 其它未展開模組預留位置 ================= -->
+            <!-- ================= 4. 總結說明模組 ================= -->
             <div id="documents-module" class="module-content">
-                <div class="section-title"><span>📁</span> 總結說明</div>
-                <p>總結說明內容建置中...</p>
-                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                <div class="workflow-header">
+                    <div class="section-title" style="margin-bottom:0;">
+                        <span>📁</span> 總結說明
+                    </div>
+                    <div class="header-btn-group">
+                        <button class="pdf-btn" onclick="exportPDF()">🖨️ 匯出 PDF</button>
+                        <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                    </div>
+                </div>
+                <div class="workflow-card">
+                    <h3>📁 專案總結摘要</h3>
+                    <p>總結說明內容建置中...</p>
+                </div>
             </div>
 
+            <!-- ================= 5. 專屬顧問諮詢模組 ================= -->
             <div id="contact-module" class="module-content">
-                <div class="section-title"><span>💬</span> 專屬顧問諮詢</div>
-                <p>專屬顧問諮詢內容建置中...</p>
-                <button class="back-btn" style="margin-top:20px;" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                <div class="workflow-header">
+                    <div class="section-title" style="margin-bottom:0;">
+                        <span>💬</span> 專屬顧問諮詢
+                    </div>
+                    <div class="header-btn-group">
+                        <button class="pdf-btn" onclick="exportPDF()">🖨️ 匯出 PDF</button>
+                        <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
+                    </div>
+                </div>
+                <div class="workflow-card">
+                    <h3>💬 聯絡專屬顧問</h3>
+                    <p>專屬顧問諮詢內容建置中...</p>
+                </div>
             </div>
 
         </div>
@@ -1052,6 +1148,11 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 一鍵匯出 PDF 觸發原生列印（A4 直式）
+        function exportPDF() {
+            window.print();
         }
 
         // 開啟圖片燈箱
