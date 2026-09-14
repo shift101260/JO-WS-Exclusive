@@ -371,7 +371,7 @@
             padding-bottom: 8px;
         }
 
-        /* ---------------- A4 直式白底封面專屬樣式（卡片在下方） ---------------- */
+        /* ---------------- A4 直式白底封面專屬樣式（字體下移 3 公分） ---------------- */
         .consultant-cover {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
@@ -382,7 +382,7 @@
             box-shadow: 0 10px 30px rgba(41, 37, 36, 0.05);
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* 上方標題，下方卡片與地址自動對齊 */
+            justify-content: space-between; 
             height: 980px; /* 完美吻合 A4 比例 */
             position: relative;
             overflow: hidden;
@@ -427,6 +427,7 @@
             flex-direction: column;
             align-items: center;
             gap: 14px;
+            padding-top: 3cm; /* 👈 這裡將三排字往下推 3 公分 */
         }
 
         .cover-badge {
@@ -545,7 +546,7 @@
         .timeline-table {
             width: 100%;
             border-collapse: collapse;
-            text-align: center; /* 預設全面置中 */
+            text-align: center; 
             font-size: 0.88rem;
             table-layout: fixed;
         }
@@ -555,7 +556,7 @@
             padding: 10px 8px;
             vertical-align: middle;
             word-break: break-all;
-            text-align: center !important; /* 強制表格所有文字置中 */
+            text-align: center !important; 
         }
 
         .timeline-table th {
@@ -1301,7 +1302,7 @@
                         <img src="./ruili-logo.png" alt="Ruili Logo">
                     </div>
 
-                    <!-- 上方標題與徽章 -->
+                    <!-- 上方標題與徽章 (已下移 3 公分) -->
                     <div class="cover-top-section">
                         <span class="cover-badge">中華民國 115 年 09 月 14 日</span>
                         <div class="cover-title-box">
