@@ -382,7 +382,7 @@
             box-shadow: 0 10px 30px rgba(41, 37, 36, 0.05);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* 改為由上往下排列，不強制分散對齊 */
+            justify-content: flex-start;
             min-height: 1050px; /* 模擬 A4 比例高度 */
             position: relative;
             overflow: hidden;
@@ -460,16 +460,16 @@
             width: 60px;
             height: 3px;
             background-color: var(--ruili-brand);
-            margin: 10px auto 25px auto; /* 增加下方間距，讓卡片更靠近斜線上方 */
+            margin: 25px auto 40px auto;
             border-radius: 2px;
         }
 
-        /* 封面中央卡片與對象資訊 (緊貼斜線下方) */
+        /* 客戶與公司資訊卡片 (放置於底部資訊上方) */
         .cover-middle-section {
             display: flex;
             flex-direction: column;
             gap: 24px;
-            margin: 0 auto; /* 靠上貼近標題下方 */
+            margin: 0 auto 30px auto; /* 推至底部資訊上方 */
             width: 100%;
         }
 
@@ -1000,7 +1000,7 @@
                 </div>
 
                 <div class="workflow-card">
-                    <h3>📋 都市計畫變更報價單</h3>
+                    <h3>📋 興辦事業計劃報價單</h3>
                     
                     <!-- 企業基本資訊 -->
                     <div class="quotation-header-box">
@@ -1304,10 +1304,12 @@
                             <h1>睿立資產管理顧問有限公司</h1>
                             <p>專案執行流程及報價</p>
                         </div>
-                        <div class="cover-divider"></div>
                     </div>
 
-                    <!-- 中間委託與核心服務說明卡片 (緊貼斜線下方) -->
+                    <!-- 分隔線 -->
+                    <div class="cover-divider"></div>
+
+                    <!-- 客戶與公司資訊卡片（已移至下方空白區塊） -->
                     <div class="cover-middle-section">
                         <div class="cover-client-card">
                             <div>
