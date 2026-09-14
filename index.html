@@ -376,13 +376,13 @@
             background: #ffffff;
             border: 1px solid var(--ruili-border);
             border-radius: 20px;
-            padding: 50px 40px;
+            padding: 40px 40px;
             max-width: 800px;
             margin: 0 auto;
             box-shadow: 0 10px 30px rgba(41, 37, 36, 0.05);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start; /* 改為由上往下排列，不強制分散對齊 */
             min-height: 1050px; /* 模擬 A4 比例高度 */
             position: relative;
             overflow: hidden;
@@ -460,16 +460,17 @@
             width: 60px;
             height: 3px;
             background-color: var(--ruili-brand);
-            margin: 10px auto 0 auto;
+            margin: 10px auto 25px auto; /* 增加下方間距，讓卡片更靠近斜線上方 */
             border-radius: 2px;
         }
 
-        /* 封面中央卡片與對象資訊 (修改此處將其靠上排列，不再垂直置中) */
+        /* 封面中央卡片與對象資訊 (緊貼斜線下方) */
         .cover-middle-section {
             display: flex;
             flex-direction: column;
             gap: 24px;
-            margin: 20px 0 auto 0; /* 靠上排列，不佔滿中間空間 */
+            margin: 0 auto; /* 靠上貼近標題下方 */
+            width: 100%;
         }
 
         .cover-client-card {
@@ -507,7 +508,7 @@
             align-items: flex-end;
             border-top: 1px solid var(--ruili-border);
             padding-top: 24px;
-            margin-top: 20px;
+            margin-top: auto; /* 自動推至頁面最下方 */
         }
 
         .cover-company-info p {
@@ -1306,7 +1307,7 @@
                         <div class="cover-divider"></div>
                     </div>
 
-                    <!-- 中間委託與核心服務說明卡片 -->
+                    <!-- 中間委託與核心服務說明卡片 (緊貼斜線下方) -->
                     <div class="cover-middle-section">
                         <div class="cover-client-card">
                             <div>
