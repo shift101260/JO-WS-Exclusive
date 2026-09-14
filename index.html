@@ -308,7 +308,7 @@
             margin-top: 12px;
         }
 
-        /* ---------------- 通用按鈕與卡片美編樣式 ---------------- */
+        /* 通用按鈕與卡片美編樣式 */
         .workflow-header {
             display: flex;
             justify-content: space-between;
@@ -371,7 +371,7 @@
             padding-bottom: 8px;
         }
 
-        /* ---------------- A4 直式白底封面專屬樣式 ---------------- */
+        /* A4 直式白底封面專屬樣式 */
         .consultant-cover {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
@@ -439,7 +439,7 @@
             font-weight: 700;
             letter-spacing: 1px;
             display: inline-block;
-            margin-top: 20px; /* 增加與上方大標題的距離 */
+            margin-top: 20px;
         }
 
         .cover-title-box h1 {
@@ -466,7 +466,6 @@
             margin-top: auto; /* 自動推到最下方 */
         }
 
-        /* 最上方獨立的日期小標籤 */
         .cover-top-date {
             font-size: 0.85rem;
             color: var(--ruili-sidebar);
@@ -509,7 +508,6 @@
             line-height: 1.4;
         }
 
-        /* 封面底部最下方的公司地址與日期區塊 */
         .cover-footer-section {
             display: flex;
             justify-content: space-between;
@@ -540,7 +538,7 @@
             border: 1px solid var(--ruili-border);
         }
 
-        /* 期程與報價表格樣式 (調整文字全面置中) */
+        /* 期程與報價表格樣式 */
         .timeline-table-wrapper {
             width: 100%;
             overflow-x: visible;
@@ -574,11 +572,6 @@
             background: #fff;
         }
 
-        .timeline-table tr:hover td {
-            background-color: #FAF8F5;
-        }
-
-        /* 報價單專屬表格美編 */
         .quotation-header-box {
             background: #FAF8F5;
             border: 1px solid var(--ruili-border);
@@ -672,13 +665,19 @@
 
         /* ---------------- A4 直式列印專用設定 (PDF 匯出核心) ---------------- */
         @media print {
+            /* 強制保留網頁所有彩色與背景色 */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
             @page {
                 size: A4 portrait;
                 margin: 10mm;
             }
             body {
                 background: #ffffff !important;
-                color: #000000 !important;
+                color: #292524 !important;
             }
             .ruili-sidebar, 
             .mobile-header-bar, 
@@ -714,8 +713,8 @@
             .consultant-cover {
                 border: none !important;
                 box-shadow: none !important;
-                padding: 10px 5px !important;
-                height: 100vh !important;
+                padding: 20px 25px !important;
+                height: 98vh !important;
                 page-break-after: always;
             }
         }
@@ -939,7 +938,6 @@
                     </div>
                 </div>
 
-                <!-- 階段期程對應表 -->
                 <div class="workflow-card">
                     <h3>⏱️ 專案執行階段與對應期程表</h3>
                     <div class="timeline-table-wrapper">
@@ -1010,7 +1008,6 @@
                 <div class="workflow-card">
                     <h3>📋 興辦事業計劃報價單</h3>
                     
-                    <!-- 企業基本資訊 -->
                     <div class="quotation-header-box">
                         <div>
                             <p><strong>公司名稱：</strong>玖業光電科技有限公司</p>
@@ -1032,7 +1029,6 @@
                         </div>
                     </div>
 
-                    <!-- 報價明細表格 -->
                     <div class="timeline-table-wrapper">
                         <table class="timeline-table q-table">
                             <thead>
@@ -1046,7 +1042,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- 壹 -->
                                 <tr>
                                     <td style="text-align: center; font-weight: bold;">壹</td>
                                     <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">土地相關審查</td>
@@ -1089,7 +1084,6 @@
                                     <td></td>
                                 </tr>
 
-                                <!-- 貳 -->
                                 <tr>
                                     <td style="font-weight: bold;">貳</td>
                                     <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">興辦事業計畫書</td>
@@ -1148,7 +1142,6 @@
                                     <td></td>
                                 </tr>
 
-                                <!-- 參 -->
                                 <tr>
                                     <td style="font-weight: bold;">參</td>
                                     <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">農業用地變更</td>
@@ -1191,7 +1184,6 @@
                                     <td></td>
                                 </tr>
 
-                                <!-- 肆 -->
                                 <tr>
                                     <td style="font-weight: bold;">肆</td>
                                     <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">變更編定申請</td>
@@ -1234,7 +1226,6 @@
                                     <td></td>
                                 </tr>
 
-                                <!-- 總計列 -->
                                 <tr class="q-total-row">
                                     <td colspan="4" style="text-align: right !important; padding-right: 15px;">未稅合計：</td>
                                     <td style="text-align: right !important; padding-right: 15px;">2,400,000</td>
@@ -1254,7 +1245,6 @@
                         </table>
                     </div>
 
-                    <!-- 備註與收款約定說明 -->
                     <div class="quotation-notes">
                         <p><strong>📌 備註與收款約定事項：</strong></p>
                         <ol>
@@ -1305,7 +1295,7 @@
                         <img src="./ruili-logo.png" alt="Ruili Logo">
                     </div>
 
-                    <!-- 上方標題區（已拉開間距） -->
+                    <!-- 上方標題區 -->
                     <div class="cover-top-section">
                         <div class="cover-title-box">
                             <h1>睿立資產管理顧問有限公司</h1>
@@ -1316,8 +1306,10 @@
                     <!-- 分隔線 -->
                     <div class="cover-divider"></div>
 
-                    <!-- 下方組合群組（包含日期、客戶資訊卡片、底部公司資訊，完美貼齊底部） -->
+                    <!-- 下方組合群組（包含日期、客戶資訊卡片、底部公司資訊，包覆在同一個群組內以實現靠底對齊） -->
                     <div class="cover-bottom-group">
+                        <div class="cover-top-date">
+                            中華民國 115 年 09 月 14 日
                         </div>
 
                         <!-- 客戶與公司資訊卡片 -->
