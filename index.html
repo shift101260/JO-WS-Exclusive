@@ -371,7 +371,7 @@
             padding-bottom: 8px;
         }
 
-        /* ---------------- A4 直式白底封面專屬樣式 ---------------- */
+        /* ---------------- A4 直式白底封面專屬樣式（卡片在下方） ---------------- */
         .consultant-cover {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
@@ -382,13 +382,13 @@
             box-shadow: 0 10px 30px rgba(41, 37, 36, 0.05);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            min-height: 1050px; /* 模擬 A4 比例高度 */
+            justify-content: space-between; /* 上方標題，下方卡片與地址自動對齊 */
+            height: 980px; /* 完美吻合 A4 比例 */
             position: relative;
             overflow: hidden;
         }
 
-        /* 裝飾性背景色塊 */
+        /* 裝飾性頂部色塊 */
         .consultant-cover::before {
             content: '';
             position: absolute;
@@ -426,8 +426,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
-            margin-top: 15px;
+            gap: 14px;
         }
 
         .cover-badge {
@@ -460,16 +459,21 @@
             width: 60px;
             height: 3px;
             background-color: var(--ruili-brand);
-            margin: 25px auto 30px auto;
+            margin: 15px auto;
             border-radius: 2px;
         }
 
-        /* 客戶與公司資訊卡片（放置於中間空白區塊） */
+        /* 下方組合區塊：包含「客戶與公司資訊卡片」以及最底部的「公司地址與日期」 */
+        .cover-bottom-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: auto; /* 自動推到最下方 */
+        }
+
         .cover-middle-section {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            margin: 20px 0;
             width: 100%;
         }
 
@@ -477,7 +481,7 @@
             background: #FAF8F5;
             border: 1px solid var(--ruili-border);
             border-radius: 14px;
-            padding: 24px 30px;
+            padding: 22px 28px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
@@ -486,7 +490,7 @@
         .cover-client-card h4 {
             font-size: 0.95rem;
             color: var(--ruili-sidebar);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border-bottom: 1px solid var(--ruili-border);
             padding-bottom: 6px;
             display: flex;
@@ -501,14 +505,14 @@
             line-height: 1.5;
         }
 
-        /* 封面底部區塊 */
+        /* 封面底部最下方的公司地址與日期區塊 */
         .cover-footer-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             border-top: 1px solid var(--ruili-border);
-            padding-top: 24px;
-            margin-top: auto; /* 自動推至頁面最下方 */
+            padding-top: 16px;
+            width: 100%;
         }
 
         .cover-company-info p {
@@ -706,8 +710,8 @@
             .consultant-cover {
                 border: none !important;
                 box-shadow: none !important;
-                padding: 20px 10px !important;
-                min-height: 100vh !important;
+                padding: 10px 5px !important;
+                height: 100vh !important;
                 page-break-after: always;
             }
         }
@@ -1206,7 +1210,7 @@
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td style="text-align: left !important; padding-right: 15px;">計畫書核准同意函</td>
+                                    <td style="text-align: left !important; padding-left: 15px;">計畫書核准同意函</td>
                                     <td>1</td>
                                     <td style="text-align: right !important; padding-right: 15px;">-</td>
                                     <td style="text-align: right !important; padding-right: 15px;">0</td>
@@ -1309,35 +1313,38 @@
                     <!-- 分隔線 -->
                     <div class="cover-divider"></div>
 
-                    <!-- 客戶與公司資訊卡片（已移回中間空白區塊） -->
-                    <div class="cover-middle-section">
-                        <div class="cover-client-card">
-                            <div>
-                                <h4>客戶資訊</h4>
-                                <p><strong>玖業光電科技有限公司</strong></p>
-                                <p>統編：83249885</p>
-                                <p>負責人：塗振育</p>
-                                <p>電話：06-5899863</p>
-                            </div>
-                            <div>
-                                <h4>公司資訊</h4>
-                                <p><strong>睿立資產管理顧問有限公司</strong></p>
-                                <p>統編：90411790</p>
-                                <p>經辦：鄭家承</p>
-                                <p>電話：0988-730996</p>
+                    <!-- 下方組合群組（內含資訊卡片與公司地址日期，自動推至最下方） -->
+                    <div class="cover-bottom-group">
+                        <!-- 客戶與公司資訊卡片 -->
+                        <div class="cover-middle-section">
+                            <div class="cover-client-card">
+                                <div>
+                                    <h4>客戶資訊</h4>
+                                    <p><strong>玖業光電科技有限公司</strong></p>
+                                    <p>統編：83249885</p>
+                                    <p>負責人：塗振育</p>
+                                    <p>電話：06-5899863</p>
+                                </div>
+                                <div>
+                                    <h4>公司資訊</h4>
+                                    <p><strong>睿立資產管理顧問有限公司</strong></p>
+                                    <p>統編：90411790</p>
+                                    <p>經辦：鄭家承</p>
+                                    <p>電話：0988-730996</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 下方公司與日期資訊 -->
-                    <div class="cover-footer-section">
-                        <div class="cover-company-info">
-                            <p><strong>睿立資產管理顧問有限公司</strong></p>
-                            <p>地址：高雄市苓雅區新光路38號30樓之2</p>
-                            <p>電話：07-2225595</p>
-                        </div>
-                        <div class="cover-date-badge">
-                            中華民國 115 年 09 月 14 日 
+                        <!-- 下方公司與日期資訊 -->
+                        <div class="cover-footer-section">
+                            <div class="cover-company-info">
+                                <p><strong>睿立資產管理顧問有限公司</strong></p>
+                                <p>地址：高雄市苓雅區新光路38號30樓之2</p>
+                                <p>電話：07-2225595</p>
+                            </div>
+                            <div class="cover-date-badge">
+                                中華民國 115 年 09 月 14 日 
+                            </div>
                         </div>
                     </div>
                 </div>
