@@ -371,6 +371,176 @@
             padding-bottom: 8px;
         }
 
+        /* ---------------- A4 直式白底封面專屬樣式 ---------------- */
+        .consultant-cover {
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(41, 37, 36, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 1050px; /* 模擬 A4 比例高度 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 裝飾性背景色塊 */
+        .consultant-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--ruili-brand), var(--ruili-sidebar));
+        }
+
+        .cover-top-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cover-badge {
+            background-color: var(--ruili-pink);
+            color: var(--ruili-sidebar);
+            font-size: 0.8rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cover-title-box h1 {
+            font-size: 2.4rem;
+            color: var(--ruili-sidebar);
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .cover-title-box p {
+            font-size: 1.1rem;
+            color: var(--ruili-brand);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .cover-divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--ruili-brand);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* 封面中央卡片與對象資訊 */
+        .cover-middle-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 30px 0;
+        }
+
+        .cover-client-card {
+            background: #FAF8F5;
+            border: 1px solid var(--ruili-border);
+            border-radius: 14px;
+            padding: 24px 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .cover-client-card h4 {
+            font-size: 0.95rem;
+            color: var(--ruili-sidebar);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--ruili-border);
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cover-client-card p {
+            font-size: 0.9rem;
+            color: var(--ruili-dark);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .cover-features-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .cover-feature-item {
+            background: #ffffff;
+            border: 1px solid var(--ruili-border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+        }
+
+        .cover-feature-item .f-icon {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .cover-feature-item h5 {
+            font-size: 0.9rem;
+            color: var(--ruili-sidebar);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .cover-feature-item p {
+            font-size: 0.75rem;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
+        /* 封面底部區塊 */
+        .cover-footer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid var(--ruili-border);
+            padding-top: 24px;
+            margin-top: 20px;
+        }
+
+        .cover-company-info p {
+            font-size: 0.85rem;
+            color: var(--ruili-dark);
+            line-height: 1.6;
+        }
+
+        .cover-company-info strong {
+            color: var(--ruili-sidebar);
+        }
+
+        .cover-date-badge {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--ruili-sidebar);
+            font-weight: 600;
+            background: var(--ruili-bg);
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--ruili-border);
+        }
+
         /* 期程與報價表格樣式 */
         .timeline-table-wrapper {
             width: 100%;
@@ -541,6 +711,13 @@
             .workflow-header {
                 margin-bottom: 0 !important;
             }
+            .consultant-cover {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 20px 10px !important;
+                min-height: 100vh !important;
+                page-break-after: always;
+            }
         }
 
         /* RWD 適應 */
@@ -612,9 +789,12 @@
                 flex: 1;
                 font-size: 0.95rem;
             }
-            .quotation-header-box {
+            .quotation-header-box, .cover-client-card {
                 grid-template-columns: 1fr;
                 padding: 12px;
+            }
+            .cover-features-box {
+                grid-template-columns: 1fr;
             }
             .timeline-table {
                 font-size: 0.75rem;
@@ -1109,7 +1289,7 @@
                 </div>
             </div>
 
-            <!-- ================= 5. 專屬顧問諮詢模組 ================= -->
+            <!-- ================= 5. 專屬顧問諮詢模組 (A4 直式白底封面) ================= -->
             <div id="contact-module" class="module-content">
                 <div class="workflow-header">
                     <div class="section-title" style="margin-bottom:0;">
@@ -1120,10 +1300,69 @@
                         <button class="back-btn" onclick="switchModule('home', document.querySelectorAll('.menu-item')[0])">⬅ 返回首頁</button>
                     </div>
                 </div>
-                <div class="workflow-card">
-                    <h3>💬 聯絡專屬顧問</h3>
-                    <p>專屬顧問諮詢內容建置中...</p>
+
+                <!-- A4 直式白底封面主體 -->
+                <div class="consultant-cover">
+                    <!-- 上方標題與徽章 -->
+                    <div class="cover-top-section">
+                        <span class="cover-badge">RUILI CONSULTING SERVICES</span>
+                        <div class="cover-title-box">
+                            <h1>專屬顧問諮詢報告</h1>
+                            <p>工廠法規政策與土地變更專業規劃書</p>
+                        </div>
+                        <div class="cover-divider"></div>
+                    </div>
+
+                    <!-- 中間委託與核心服務說明卡片 -->
+                    <div class="cover-middle-section">
+                        <div class="cover-client-card">
+                            <div>
+                                <h4>🏢 委託企業</h4>
+                                <p><strong>玖業光電科技有限公司</strong> (統編：83249885)</p>
+                                <p>負責人：塗振育</p>
+                                <p><strong>威欣系統股份有限公司</strong></p>
+                            </div>
+                            <div>
+                                <h4>🤝 專業顧問團隊</h4>
+                                <p><strong>睿立資產管理顧問有限公司</strong> (統編：90411790)</p>
+                                <p>專屬經辦：鄭家承 顧問</p>
+                                <p>聯絡專線：0988-730996</p>
+                            </div>
+                        </div>
+
+                        <!-- 核心亮點特色 -->
+                        <div class="cover-features-box">
+                            <div class="cover-feature-item">
+                                <div class="f-icon">🎯</div>
+                                <h5>精準法規對應</h5>
+                                <p>深入解析各局處審查意見，擬定最佳變更策略。</p>
+                            </div>
+                            <div class="cover-feature-item">
+                                <div class="f-icon">📊</div>
+                                <h5>嚴謹時程掌控</h5>
+                                <p>從送件、通檢審查到正式編定，每一步穩健推進。</p>
+                            </div>
+                            <div class="cover-feature-item">
+                                <div class="f-icon">🛡️</div>
+                                <h5>安心履約保障</h5>
+                                <p>專業團隊全程陪伴，為企業資產與未來發展護航。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 下方公司與日期資訊 -->
+                    <div class="cover-footer-section">
+                        <div class="cover-company-info">
+                            <p><strong>睿立資產管理顧問有限公司</strong></p>
+                            <p>地址：高雄市苓雅區新光路38號30樓之2</p>
+                            <p>電話：07-2225595 | 網址：專屬企業服務入口</p>
+                        </div>
+                        <div class="cover-date-badge">
+                            中華民國 115 年 8 月
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
         </div>
