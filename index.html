@@ -371,12 +371,12 @@
             padding-bottom: 8px;
         }
 
-        /* ---------------- A4 直式白底封面專屬樣式（字體下移 3 公分） ---------------- */
+        /* ---------------- A4 直式白底封面專屬樣式 ---------------- */
         .consultant-cover {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
             border-radius: 20px;
-            padding: 40px 40px;
+            padding: 35px 40px;
             max-width: 800px;
             margin: 0 auto;
             box-shadow: 0 10px 30px rgba(41, 37, 36, 0.05);
@@ -426,19 +426,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
-            padding-top: 3cm; /* 👈 這裡將三排字往下推 3 公分 */
+            gap: 0px;
+            padding-top: 2.5cm; 
         }
 
         .cover-badge {
             background-color: var(--ruili-pink);
             color: var(--ruili-sidebar);
-            font-size: 0.8rem;
-            padding: 6px 16px;
+            font-size: 0.95rem;
+            padding: 8px 22px;
             border-radius: 20px;
             font-weight: 700;
             letter-spacing: 1px;
-            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 20px; /* 增加與上方大標題的距離 */
         }
 
         .cover-title-box h1 {
@@ -446,14 +447,7 @@
             color: var(--ruili-sidebar);
             font-weight: 800;
             letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .cover-title-box p {
-            font-size: 1.1rem;
-            color: var(--ruili-brand);
-            font-weight: 600;
-            letter-spacing: 1px;
+            margin-bottom: 0px;
         }
 
         .cover-divider {
@@ -464,12 +458,21 @@
             border-radius: 2px;
         }
 
-        /* 下方組合區塊：包含「客戶與公司資訊卡片」以及最底部的「公司地址與日期」 */
+        /* 下方組合群組：包含頂部日期、中間資訊卡片與最底部的公司地址與日期 */
         .cover-bottom-group {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
             margin-top: auto; /* 自動推到最下方 */
+        }
+
+        /* 最上方獨立的日期小標籤 */
+        .cover-top-date {
+            font-size: 0.85rem;
+            color: var(--ruili-sidebar);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
 
         .cover-middle-section {
@@ -482,7 +485,7 @@
             background: #FAF8F5;
             border: 1px solid var(--ruili-border);
             border-radius: 14px;
-            padding: 22px 28px;
+            padding: 20px 24px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
@@ -491,7 +494,7 @@
         .cover-client-card h4 {
             font-size: 0.95rem;
             color: var(--ruili-sidebar);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border-bottom: 1px solid var(--ruili-border);
             padding-bottom: 6px;
             display: flex;
@@ -500,10 +503,10 @@
         }
 
         .cover-client-card p {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--ruili-dark);
-            margin-bottom: 6px;
-            line-height: 1.5;
+            margin-bottom: 5px;
+            line-height: 1.4;
         }
 
         /* 封面底部最下方的公司地址與日期區塊 */
@@ -512,14 +515,14 @@
             justify-content: space-between;
             align-items: flex-end;
             border-top: 1px solid var(--ruili-border);
-            padding-top: 16px;
+            padding-top: 14px;
             width: 100%;
         }
 
         .cover-company-info p {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--ruili-dark);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .cover-company-info strong {
@@ -532,7 +535,7 @@
             color: var(--ruili-sidebar);
             font-weight: 600;
             background: var(--ruili-bg);
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-radius: 8px;
             border: 1px solid var(--ruili-border);
         }
@@ -1302,19 +1305,24 @@
                         <img src="./ruili-logo.png" alt="Ruili Logo">
                     </div>
 
-                    <!-- 上方標題與徽章 (已下移 3 公分) -->
+                    <!-- 上方標題區（已拉開間距） -->
                     <div class="cover-top-section">
                         <div class="cover-title-box">
                             <h1>睿立資產管理顧問有限公司</h1>
-                            <span class="cover-badge">專案執行流程及報價</span>
+                            <div class="cover-badge">專案執行流程及報價</div>
                         </div>
                     </div>
 
                     <!-- 分隔線 -->
                     <div class="cover-divider"></div>
 
-                    <!-- 下方組合群組（內含資訊卡片與公司地址日期，自動推至最下方） -->
+                    <!-- 下方組合群組（包含日期、客戶資訊卡片、底部公司資訊，完美貼齊底部） -->
                     <div class="cover-bottom-group">
+                        <!-- 頂部日期 -->
+                        <div class="cover-top-date">
+                            中華民國 115 年 09 月 14 日
+                        </div>
+
                         <!-- 客戶與公司資訊卡片 -->
                         <div class="cover-middle-section">
                             <div class="cover-client-card">
