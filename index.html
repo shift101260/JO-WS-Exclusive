@@ -351,6 +351,7 @@
             background: #b88a5d;
         }
 
+        /* 修改 workflow-card 支援滿版與彈性上下對齊（解決 2/3 空白與備註到底問題） */
         .workflow-card {
             background: #ffffff;
             border: 1px solid var(--ruili-border);
@@ -358,6 +359,10 @@
             padding: 24px;
             margin-bottom: 24px;
             box-shadow: 0 4px 16px rgba(41, 37, 36, 0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 255mm; /* 完美填滿單頁 A4 */
         }
 
         .workflow-card h3 {
@@ -383,7 +388,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
-            height: 950px; /* 完美吻合 A4 比例 */
+            height: 255mm; /* 完美吻合 A4 比例 */
             position: relative;
             overflow: hidden;
         }
@@ -603,8 +608,9 @@
             background-color: #F4ECE1 !important;
         }
 
+        /* 將備註與收款約定事項推到底部 */
         .quotation-notes {
-            margin-top: 20px;
+            margin-top: auto;
             background: #FAF8F5;
             border-left: 4px solid var(--ruili-brand);
             padding: 16px;
@@ -696,13 +702,14 @@
             .workflow-card {
                 border: none !important;
                 box-shadow: none !important;
-                padding: 0 !important;
+                padding: 15px 25px !important;
                 margin: 0 !important;
+                height: 255mm !important;
+                page-break-after: always;
             }
             .workflow-header {
                 margin-bottom: 0 !important;
             }
-            /* 精準設定列印封面高度為 255mm，完美控制在一頁 A4 內 */
             .consultant-cover {
                 border: none !important;
                 box-shadow: none !important;
@@ -971,9 +978,9 @@
                                 </tr>
                                 <tr>
                                     <th>睿立收款期程</th>
+                                    <td>30%</td>
                                     <td>10%</td>
-                                    <td>20%</td>
-                                    <td>60%</td>
+                                    <td>50%</td>
                                     <td>10%</td>
                                 </tr>
                                 <tr>
@@ -986,6 +993,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <div></div> <!-- 佔位符維持 flex 完美滿版對齊 -->
                 </div>
             </div>
 
@@ -1002,252 +1010,255 @@
                 </div>
 
                 <div class="workflow-card">
-                    <h3>📋都市計畫變更報價單</h3>
-                    
-                    <div class="quotation-header-box">
-                        <div>
-                            <p><strong>公司名稱：</strong>玖業光電科技有限公司</p>
-                            <p><strong>統編：</strong>83249885</p>
-                            <p><strong>姓名：</strong>塗振育</p>
-                            <p><strong>電話：</strong>06-5899871</p>
-                            <p><strong>手機：</strong>0906-388043</p>
-                            <p><strong>信箱：</strong>jotc@jotctw.com</p>
-                            <p><strong>地址：</strong>臺南市新市區中山路187號</p>
+                    <div>
+                        <h3>📋 都市計畫變更報價單</h3>
+                        
+                        <div class="quotation-header-box">
+                            <div>
+                                <p><strong>公司名稱：</strong>玖業光電科技有限公司</p>
+                                <p><strong>統編：</strong>83249885</p>
+                                <p><strong>姓名：</strong>塗振育</p>
+                                <p><strong>電話：</strong>06-5899871</p>
+                                <p><strong>手機：</strong>0906-388043</p>
+                                <p><strong>信箱：</strong>jotc@jotctw.com</p>
+                                <p><strong>地址：</strong>臺南市新市區中山路187號</p>
+                            </div>
+                            <div>
+                                <p><strong>報價日期：</strong>中華民國 115 年 09 月 14 日</p>
+                                <p><strong>公司名稱：</strong>睿立資產管理顧問有限公司</p>
+                                <p><strong>統編：</strong>90411790</p>
+                                <p><strong>電話：</strong>07-2225595</p>
+                                <p><strong>經辦：</strong>鄭家承</p>
+                                <p><strong>手機：</strong>0988-730996</p>
+                                <p><strong>地址：</strong>高雄市苓雅區新光路38號30樓之2</p>
+                            </div>
                         </div>
-                        <div>
-                            <p><strong>報價日期：</strong>中華民國 115 年 09 月 14 日</p>
-                            <p><strong>公司名稱：</strong>睿立資產管理顧問有限公司</p>
-                            <p><strong>統編：</strong>90411790</p>
-                            <p><strong>電話：</strong>07-2225595</p>
-                            <p><strong>經辦：</strong>鄭家承</p>
-                            <p><strong>手機：</strong>0988-730996</p>
-                            <p><strong>地址：</strong>高雄市苓雅區新光路38號30樓之2</p>
+
+                        <div class="timeline-table-wrapper">
+                            <table class="timeline-table q-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 12%;">項次</th>
+                                        <th style="width: 38%; text-align: left;">項目名稱</th>
+                                        <th style="width: 10%;">數量</th>
+                                        <th style="width: 15%; text-align: right;">單價</th>
+                                        <th style="width: 15%; text-align: right;">複價</th>
+                                        <th style="width: 10%; text-align: left;">備註</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center; font-weight: bold;">壹</td>
+                                        <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">土地相關審查</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">地形測繪 + 航測地籍測套繪</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">100,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">100,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">建築線指定</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">50,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">50,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">地質鑽探簽證費用</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td>另委託建築師</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">禁限建 (敏感區位) 查詢</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">50,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">50,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="q-subtotal">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">【壹】小計：</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">200,000</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="font-weight: bold;">貳</td>
+                                        <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">興辦事業計畫書</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">計劃書製作</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">1,000,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">1,000,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">建築物用途說明</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">250,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">250,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">土地使用規劃</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">250,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">250,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">建築規劃設計</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td>另委託建築師</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">搭排計劃書</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">審查計畫及簡報</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">150,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">150,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="q-subtotal">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">【貳】小計：</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">1,650,000</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="font-weight: bold;">參</td>
+                                        <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">農業用地變更</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">農業用地變更使用說明書</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">250,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">250,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">變更相關審查及附件</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">80,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">80,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">會勘、審查簡報</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">80,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">80,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">計畫書核准同意函</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">-</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="q-subtotal">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">【參】小計：</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">410,000</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="font-weight: bold;">肆</td>
+                                        <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">變更編定申請</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">變更編定計畫書</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">80,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">80,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">會勘、審查簡報</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">30,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">30,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">計畫書核准同意函</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">-</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">0</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td style="text-align: left !important; padding-left: 15px;">地政變更申請</td>
+                                        <td>1</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">30,000</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">30,000</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr class="q-subtotal">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">【肆】小計：</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">140,000</td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr class="q-total-row">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">未稅合計：</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">2,400,000</td>
+                                        <td>NTD</td>
+                                    </tr>
+                                    <tr class="q-total-row">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">營業稅 (5%)：</td>
+                                        <td style="text-align: right !important; padding-right: 15px;">120,000</td>
+                                        <td>NTD</td>
+                                    </tr>
+                                    <tr class="q-total-row" style="background: #E8D5C4 !important; font-size: 1rem;">
+                                        <td colspan="4" style="text-align: right !important; padding-right: 15px;">含稅總計金額：</td>
+                                        <td style="text-align: right !important; padding-right: 15px; color: #824317;">2,520,000</td>
+                                        <td>NTD</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div class="timeline-table-wrapper">
-                        <table class="timeline-table q-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 12%;">項次</th>
-                                    <th style="width: 38%; text-align: left;">項目名稱</th>
-                                    <th style="width: 10%;">數量</th>
-                                    <th style="width: 15%; text-align: right;">單價</th>
-                                    <th style="width: 15%; text-align: right;">複價</th>
-                                    <th style="width: 10%; text-align: left;">備註</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="text-align: center; font-weight: bold;">壹</td>
-                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">土地相關審查</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">地形測繪 + 航測地籍測套繪</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">100,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">100,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">建築線指定</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">50,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">50,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">地質鑽探簽證費用</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td>另委託建築師</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">禁限建 (敏感區位) 查詢</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">50,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">50,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr class="q-subtotal">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">【壹】小計：</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">200,000</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <td style="font-weight: bold;">貳</td>
-                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">興辦事業計畫書</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">計劃書製作</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">1,000,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">1,000,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">建築物用途說明</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">250,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">250,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">土地使用規劃</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">250,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">250,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">建築規劃設計</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td>另委託建築師</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">搭排計劃書</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">審查計畫及簡報</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">150,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">150,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr class="q-subtotal">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">【貳】小計：</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">1,650,000</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <td style="font-weight: bold;">參</td>
-                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">農業用地變更</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">農業用地變更使用說明書</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">250,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">250,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">變更相關審查及附件</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">80,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">80,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">會勘、審查簡報</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">80,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">80,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">計畫書核准同意函</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">-</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr class="q-subtotal">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">【參】小計：</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">410,000</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr>
-                                    <td style="font-weight: bold;">肆</td>
-                                    <td colspan="5" style="font-weight: bold; background: #FAF3EC; text-align: left !important; padding-left: 15px;">變更編定申請</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">變更編定計畫書</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">80,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">80,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">會勘、審查簡報</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">30,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">30,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">計畫書核准同意函</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">-</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">0</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td style="text-align: left !important; padding-left: 15px;">地政變更申請</td>
-                                    <td>1</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">30,000</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">30,000</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr class="q-subtotal">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">【肆】小計：</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">140,000</td>
-                                    <td></td>
-                                </tr>
-
-                                <tr class="q-total-row">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">未稅合計：</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">2,400,000</td>
-                                    <td>NTD</td>
-                                </tr>
-                                <tr class="q-total-row">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">營業稅 (5%)：</td>
-                                    <td style="text-align: right !important; padding-right: 15px;">120,000</td>
-                                    <td>NTD</td>
-                                </tr>
-                                <tr class="q-total-row" style="background: #E8D5C4 !important; font-size: 1rem;">
-                                    <td colspan="4" style="text-align: right !important; padding-right: 15px;">含稅總計金額：</td>
-                                    <td style="text-align: right !important; padding-right: 15px; color: #824317;">2,520,000</td>
-                                    <td>NTD</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
+                    <!-- 備註與收款約定事項（自動貼齊頁面最下方） -->
                     <div class="quotation-notes">
                         <p><strong>📌 備註與收款約定事項：</strong></p>
                         <ol>
                             <li>內容若有錯誤，請於五日內更正，敬請配合。</li>
                             <li>付款方式：匯款、現金。幣別為新台幣。</li>
                             <li><strong>匯款帳戶：</strong>合作金庫銀行 - 東高雄分行 (代號 006)，帳號：<code>0780-717-036196</code>。戶名：睿立資產管理顧問有限公司。</li>
-                            <li><strong>收款期程與比例：</strong>送件 10%、通檢審查會議 20%、計畫通過暫編 60%、正式編定 10%。</li>
+                            <li><strong>收款期程與比例：</strong>送件 30%、通檢審查會議 10%、計畫通過暫編 50%、正式編定 10%。</li>
                             <li><strong>都市計畫變更：</strong>經溝通協調後改善項目及代金等，以各局處審查會議改善意見為主。</li>
                         </ol>
                     </div>
@@ -1267,8 +1278,11 @@
                     </div>
                 </div>
                 <div class="workflow-card">
-                    <h3>📁 專案總結摘要</h3>
-                    <p>總結說明內容建置中...</p>
+                    <div>
+                        <h3>📁 專案總結摘要</h3>
+                        <p>總結說明內容建置中...</p>
+                    </div>
+                    <div></div>
                 </div>
             </div>
 
