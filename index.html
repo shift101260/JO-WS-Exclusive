@@ -383,7 +383,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between; 
-            height: 980px; /* 完美吻合 A4 比例 */
+            height: 980px; /* 網頁預覽固定高度 */
             position: relative;
             overflow: hidden;
         }
@@ -427,7 +427,7 @@
             flex-direction: column;
             align-items: center;
             gap: 0px;
-            padding-top: 2.5cm; 
+            padding-top: 2cm; 
         }
 
         .cover-badge {
@@ -673,7 +673,7 @@
 
             @page {
                 size: A4 portrait;
-                margin: 10mm;
+                margin: 0mm; /* 邊距歸零，由內部 cover 控制留白，防止超出分頁 */
             }
             body {
                 background: #ffffff !important;
@@ -682,8 +682,7 @@
             .ruili-sidebar, 
             .mobile-header-bar, 
             .content-header, 
-            .workflow-header .section-title, 
-            .workflow-header button,
+            .workflow-header,
             .cards-grid {
                 display: none !important;
             }
@@ -701,20 +700,16 @@
             .module-content.active {
                 display: block !important;
             }
-            .workflow-card {
-                border: none !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-            .workflow-header {
-                margin-bottom: 0 !important;
-            }
+            
+            /* 列印時讓封面精準吻合 A4 實體尺寸 (寬 210mm x 高 297mm) */
             .consultant-cover {
                 border: none !important;
                 box-shadow: none !important;
-                padding: 20px 25px !important;
-                height: 98vh !important;
+                padding: 20mm 15mm !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                max-width: none !important;
+                margin: 0 !important;
                 page-break-after: always;
             }
         }
@@ -1306,7 +1301,7 @@
                     <!-- 分隔線 -->
                     <div class="cover-divider"></div>
 
-                    <!-- 下方組合群組（包含日期、客戶資訊卡片、底部公司資訊，包覆在同一個群組內以實現靠底對齊） -->
+                    <!-- 下方組合群組（包含日期、客戶資訊卡片、底部公司資訊） -->
                     <div class="cover-bottom-group">
                         <div class="cover-top-date">
                             中華民國 115 年 09 月 14 日
